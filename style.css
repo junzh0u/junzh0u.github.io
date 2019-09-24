@@ -1,0 +1,21 @@
+body {
+    background-color: #1E1E1E;
+    color: white;
+    text-align: center;
+}
+
+a {
+    color: #4FCC8B;
+}
+
+a:hover {
+    color: #8ADDFF;
+}
+
+h1 {
+    margin: 2em 0;
+}
+
+h2 {
+    margin-bottom: 1em;
+}
