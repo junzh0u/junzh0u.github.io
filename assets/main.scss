@@ -5,6 +5,15 @@
 @import "minima";
 
 a.site-title em {
-    color: lightgray;
+    color: white;
     font-style: normal;
+}
+
+a.site-title:hover {
+    text-decoration: none;
+}
+
+a.site-title:hover em {
+    color: lightgray;
+    text-decoration: none;
 }
