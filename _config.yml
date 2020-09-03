@@ -27,6 +27,7 @@ twitter_username: junzh0u
 google_analytics: UA-177201897-1
 
 # Build settings
+permalink: pretty
 markdown: kramdown
 theme: minima
 plugins:
