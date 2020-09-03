@@ -25,22 +25,15 @@ linkedin_username: junzh0u
 github_username: junzh0u
 twitter_username: junzh0u
 google_analytics: UA-177201897-1
-rss: RSS
 
 # Build settings
-permalink: /blog/:categories/:year/:month/:day/:title/
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      hidden: false
+collections:
+  rants:
+    output: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

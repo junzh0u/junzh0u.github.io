@@ -2,8 +2,6 @@
 layout: post
 title: "我的父亲"
 date: 2020-08-29 18:20:00 -0700
-tags: life
-hidden: true
 ---
 我父亲是个很文艺的人。
 
