@@ -13,16 +13,22 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+url: "https://junz.info"
+baseurl: "" # the subpath of your site, e.g. /blog
+
 title: Jun Zhou
 email: junz@junz.info
 description: >-
-  Coder, Woodworker, LEGO Fan
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://junz.info"
+  Coder, Woodworker, LEGO Fan.
+
+linkedin_username: junzh0u
+github_username: junzh0u
 twitter_username: junzh0u
-github_username:  junzh0u
+google_analytics: UA-177201897-1
+rss: RSS
 
 # Build settings
+permalink: /blog/:categories/:year/:month/:day/:title/
 markdown: kramdown
 theme: minima
 plugins:
