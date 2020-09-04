@@ -17,6 +17,7 @@ url: "https://junz.info"
 baseurl: "" # the subpath of your site, e.g. /blog
 
 title: Jun Zhou
+author: Jun Zhou
 email: junz@junz.info
 description: >-
   Coder, Woodworker, LEGO Fan.
