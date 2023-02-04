@@ -35,6 +35,7 @@ minima:
     - { platform: github,  user_url: "https://github.com/junzh0u" }
     - { platform: linkedin, user_url: "https://www.linkedin.com/in/junzh0u" }
     - { platform: telegram, user_url: "https://t.me/junzh0u" }
+    - { platform: mastodon, user_url: "https://mastodon.world/@junzh0u" }
 google_analytics: UA-177201897-1
 
 # Exclude from processing.
