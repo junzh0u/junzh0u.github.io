@@ -124,12 +124,6 @@ footer {
   color: var(--text);
 }
 
-.resume-nav em {
-  color: var(--muted);
-  font-style: normal;
-  opacity: 0.6;
-}
-
 .resume-grid {
   display: grid;
   grid-template-columns: 9rem 1fr;
