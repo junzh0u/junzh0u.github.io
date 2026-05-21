@@ -4,6 +4,8 @@
   --link: #2a7ae2;
   --link-hover: #1756a9;
   --bg: #ffffff;
+  --accent: #e0612d;
+  --rule: #d4d1cc;
 }
 
 * { box-sizing: border-box; }
@@ -34,10 +36,10 @@ main {
 }
 
 .site-title {
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   font-weight: 600;
-  margin: 0 0 2.5rem;
-  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .site-title a {
@@ -46,13 +48,28 @@ main {
 }
 
 .site-title em {
-  color: var(--muted);
+  color: var(--accent);
   font-style: normal;
+  transition: color 150ms ease;
 }
 
 .site-title a:hover em {
   color: var(--text);
-  transition: color 150ms ease;
+}
+
+.tagline {
+  color: var(--muted);
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.tagline a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tagline a:hover {
+  color: var(--text);
 }
 
 p {
@@ -103,8 +120,6 @@ footer {
 /* --- Resume page --- */
 
 .resume-page {
-  --accent: #e0612d;
-  --rule: #d4d1cc;
   padding-top: 2.5rem;
 }
 
@@ -124,12 +139,13 @@ footer {
   color: var(--text);
 }
 
-.resume-grid {
+.page-grid {
   display: grid;
   grid-template-columns: 9rem 1fr;
   column-gap: 2rem;
   row-gap: 2.25rem;
   align-items: start;
+  align-content: start;
 }
 
 .name-block {
@@ -266,7 +282,7 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .resume-grid {
+  .page-grid {
     grid-template-columns: 1fr;
     row-gap: 0.5rem;
   }
@@ -309,7 +325,7 @@ footer {
     --bg: #22252a;
   }
 
-  .resume-page {
+  :root {
     --rule: #3a3d42;
   }
 }
@@ -342,12 +358,12 @@ footer {
     display: none !important;
   }
 
-  main.resume-grid {
+  main.page-grid {
     max-width: none;
     margin: 0;
   }
 
-  .resume-grid {
+  .page-grid {
     row-gap: 1.25rem;
   }
 
