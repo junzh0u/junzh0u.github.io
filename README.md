@@ -1,1 +1,1 @@
-[![pages-build-deployment](https://github.com/junzh0u/junzh0u.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/junzh0u/junzh0u.github.io/actions/workflows/pages/pages-build-deployment)
+Source for [junz.info](https://junz.info/) — static HTML served by GitHub Pages.
