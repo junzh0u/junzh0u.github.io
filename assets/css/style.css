@@ -48,13 +48,13 @@ main {
 }
 
 .site-title em {
-  color: var(--accent);
+  color: var(--muted);
   font-style: normal;
   transition: color 150ms ease;
 }
 
 .site-title a:hover em {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .tagline {
