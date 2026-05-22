@@ -257,6 +257,10 @@ footer {
   text-decoration: none;
 }
 
+.print-only {
+  display: none !important;
+}
+
 .section-label {
   grid-column: 1;
   font-size: 0.78rem;
@@ -411,6 +415,10 @@ footer {
   footer,
   .no-print {
     display: none !important;
+  }
+
+  .print-only {
+    display: flex !important;
   }
 
   main.page-grid {
