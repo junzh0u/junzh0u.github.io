@@ -261,6 +261,10 @@ footer {
   display: none !important;
 }
 
+.resume-print-footer {
+  display: none;
+}
+
 .section-label {
   grid-column: 1;
   font-size: 0.78rem;
@@ -419,6 +423,16 @@ footer {
 
   .print-only {
     display: flex !important;
+  }
+
+  .resume-print-footer {
+    display: block !important;
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
   }
 
   main.page-grid {
