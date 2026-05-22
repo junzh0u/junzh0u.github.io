@@ -222,6 +222,15 @@ footer {
   color: var(--link);
 }
 
+.contact .cta a {
+  color: var(--accent);
+}
+
+.contact .cta a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
 .section-label {
   grid-column: 1;
   font-size: 0.78rem;
@@ -373,7 +382,8 @@ footer {
   }
 
   .resume-nav,
-  footer {
+  footer,
+  .no-print {
     display: none !important;
   }
 
