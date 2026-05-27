@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!--
+    Source for the Open Graph preview image. Edit here, then run `just og`
+    to regenerate /og-image.png. Tokens mirror assets/css/style.css.
+  -->
+  <style>
+    :root {
+      --text: #1a1a1a;
+      --muted: #b0b0b0;
+      --bg: #ffffff;
+      --accent: #e0612d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1200px; height: 630px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 90px 96px;
+    }
+    .kicker {
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      position: relative;
+      padding-top: 28px;
+      margin-bottom: 44px;
+    }
+    .kicker::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 56px;
+      height: 3px;
+      background: var(--accent);
+    }
+    .wordmark {
+      font-size: 128px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+    .wordmark em {
+      color: var(--accent);
+      font-style: normal;
+    }
+    .tagline {
+      font-size: 40px;
+      letter-spacing: -0.01em;
+      color: var(--muted);
+    }
+    .tagline b {
+      color: var(--text);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <p class="kicker">Jun Zhou · Staff Software Engineer</p>
+  <h1 class="wordmark">junz<em>hou</em>.info</h1>
+  <p class="tagline">I code, both <b>for a living</b> and <b>for fun</b>.</p>
+</body>
+</html>
