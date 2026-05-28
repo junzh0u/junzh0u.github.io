@@ -63,13 +63,13 @@ main {
   font-size: 1.05rem;
 }
 
-.tagline a {
+.subtle-links a {
   color: inherit;
   text-decoration: none;
 }
 
-.tagline a:hover {
-  color: var(--text);
+.subtle-links a:hover {
+  color: var(--accent);
 }
 
 p {
