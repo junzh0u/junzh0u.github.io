@@ -163,7 +163,8 @@ footer {
 /* --- Resume page --- */
 
 .resume-page,
-.projects-page {
+.projects-page,
+.uses-page {
   padding-top: 2.5rem;
 }
 
@@ -421,6 +422,43 @@ footer {
   margin: 0;
 }
 
+/* --- Uses page --- */
+
+.uses-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.uses-list li {
+  margin: 0 0 0.55rem;
+}
+
+.uses-list li:last-child {
+  margin-bottom: 0;
+}
+
+.uses-list .note {
+  color: var(--muted);
+}
+
+.uses-credit {
+  grid-column: 2;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.uses-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.uses-credit a:hover {
+  color: var(--text);
+}
+
 @media (max-width: 640px) {
   .page-grid {
     grid-template-columns: 1fr;
@@ -431,7 +469,8 @@ footer {
   .contact,
   .section-label,
   .section-body,
-  .projects-more {
+  .projects-more,
+  .uses-credit {
     grid-column: 1;
     grid-row: auto;
     align-self: stretch;
