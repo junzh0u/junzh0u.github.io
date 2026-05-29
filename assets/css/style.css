@@ -109,25 +109,6 @@ a:hover {
   transform: translateX(3px);
 }
 
-/* Inline call-to-action link (accent + nudging arrow) for use within prose.
-   `a.cta-link` is intentional: it out-specifies `.subtle-links a`, so the
-   phrase reads as accent even when it sits inside a muted-link paragraph. */
-a.cta-link,
-a.cta-link:hover {
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.cta-link span {
-  display: inline-block;
-  transition: transform 150ms ease;
-}
-
-.cta-link:hover span {
-  transform: translateX(3px);
-}
-
 footer {
   width: 100%;
   max-width: 44rem;
@@ -163,7 +144,7 @@ footer {
 /* --- Resume page --- */
 
 .resume-page,
-.projects-page,
+.built-page,
 .uses-page {
   padding-top: 2.5rem;
 }
@@ -385,7 +366,12 @@ footer {
   font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin: 0 0 0.4rem;
+  /* top margin separates stacked project entries within one section */
+  margin: 1.5rem 0 0.4rem;
+}
+
+.section-body > .project-name:first-child {
+  margin-top: 0;
 }
 
 .project-name a {
@@ -417,16 +403,13 @@ footer {
   border-radius: 4px;
 }
 
-.projects-more {
-  grid-column: 2;
-  margin: 0;
-}
-
 /* --- Uses page --- */
 
 .uses-list {
   list-style: none;
-  margin: 0;
+  /* a little more separation from the section's intro line than plain
+     paragraph spacing gives (collapses with the intro's 1rem margin) */
+  margin: 1.5rem 0 0;
   padding: 0;
 }
 
@@ -469,7 +452,6 @@ footer {
   .contact,
   .section-label,
   .section-body,
-  .projects-more,
   .uses-credit {
     grid-column: 1;
     grid-row: auto;
