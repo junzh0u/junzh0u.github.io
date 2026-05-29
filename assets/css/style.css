@@ -6,6 +6,7 @@
   --bg: #ffffff;
   --accent: #e0612d;
   --rule: #d4d1cc;
+  --code-bg: rgba(0, 0, 0, 0.055);
 
   --body-font-size: 18px;
   --body-line-height: 1.65;
@@ -108,6 +109,25 @@ a:hover {
   transform: translateX(3px);
 }
 
+/* Inline call-to-action link (accent + nudging arrow) for use within prose.
+   `a.cta-link` is intentional: it out-specifies `.subtle-links a`, so the
+   phrase reads as accent even when it sits inside a muted-link paragraph. */
+a.cta-link,
+a.cta-link:hover {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cta-link span {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+
+.cta-link:hover span {
+  transform: translateX(3px);
+}
+
 footer {
   width: 100%;
   max-width: 44rem;
@@ -142,11 +162,13 @@ footer {
 
 /* --- Resume page --- */
 
-.resume-page {
+.resume-page,
+.projects-page {
   padding-top: 2.5rem;
 }
 
-.resume-nav {
+.resume-nav,
+.page-nav {
   width: 100%;
   max-width: 44rem;
   margin: 0 auto 2.5rem;
@@ -156,12 +178,14 @@ footer {
   align-items: center;
 }
 
-.resume-nav a {
+.resume-nav a,
+.page-nav a {
   color: var(--muted);
   text-decoration: none;
 }
 
-.resume-nav a:hover {
+.resume-nav a:hover,
+.page-nav a:hover {
   color: var(--text);
 }
 
@@ -354,6 +378,49 @@ footer {
   margin: 0;
 }
 
+/* --- Projects page --- */
+
+.project-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
+}
+
+.project-name a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.project-name a:hover {
+  color: var(--accent);
+}
+
+.repo-arrow {
+  color: var(--muted);
+  font-weight: 400;
+  display: inline-block;
+  transition: transform 150ms ease, color 150ms ease;
+}
+
+.project-name a:hover .repo-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+.section-body code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+.projects-more {
+  grid-column: 2;
+  margin: 0;
+}
+
 @media (max-width: 640px) {
   .page-grid {
     grid-template-columns: 1fr;
@@ -363,7 +430,8 @@ footer {
   .name-block,
   .contact,
   .section-label,
-  .section-body {
+  .section-body,
+  .projects-more {
     grid-column: 1;
     grid-row: auto;
     align-self: stretch;
@@ -400,6 +468,7 @@ footer {
 
   :root {
     --rule: #3a3d42;
+    --code-bg: rgba(255, 255, 255, 0.08);
   }
 }
 
