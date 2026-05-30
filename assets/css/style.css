@@ -478,6 +478,21 @@ footer {
   color: var(--text);
 }
 
+/* --- Now page --- */
+
+.now-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.now-updated {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 @media (max-width: 640px) {
   .page-grid {
     grid-template-columns: 1fr;
