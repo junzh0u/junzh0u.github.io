@@ -10,6 +10,9 @@
 
   --body-font-size: 18px;
   --body-line-height: 1.65;
+
+  /* shared max-width for nav, main, and footer across every page */
+  --content-width: 56rem;
 }
 
 * { box-sizing: border-box; }
@@ -34,7 +37,7 @@ body {
 
 main {
   width: 100%;
-  max-width: 44rem;
+  max-width: var(--content-width);
   margin: 0 auto;
   flex: 1;
 }
@@ -111,7 +114,7 @@ a:hover {
 
 footer {
   width: 100%;
-  max-width: 44rem;
+  max-width: var(--content-width);
   margin: 4rem auto 0;
 }
 
@@ -152,7 +155,7 @@ footer {
 .resume-nav,
 .page-nav {
   width: 100%;
-  max-width: 44rem;
+  max-width: var(--content-width);
   margin: 0 auto 2.5rem;
   font-size: 0.95rem;
   display: flex;
