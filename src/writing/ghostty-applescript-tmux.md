@@ -35,7 +35,7 @@ So often I want to capture the output of a command **after** I've already run it
 tmux capture-pane -pS - | pick-cmd
 ```
 
-`pick-cmd` is [a script I wrote](https://gist.github.com/junzh0u/8cf5cc0abb51b8a2d68fa83e4911e9b9): it reads from stdin, parses command boundaries, presents them in fzf, and prints the selected command blocks to stdout. Very convenient.
+`pick-cmd` is [a script I wrote](https://gist.github.com/junzh0u/8cf5cc0abb51b8a2d68fa83e4911e9b9): it reads from stdin, parses command boundaries (by looking for my custom [starship](https://starship.rs/) prompt as the delimiter), presents them in fzf, and prints the selected command blocks to stdout. Very convenient.
 
 ## iTerm2 profiles
 
