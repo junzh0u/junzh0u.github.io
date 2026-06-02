@@ -51,7 +51,7 @@ For all the emulators I'd tried, none could cover my iTerm2-profiles workflow â€
 
 Plenty about Ghostty won me over before I even got to the niche feature I needed: it's fast, it's genuinely pretty out of the box, it has a built-in quick (drop-down) terminal, and it's configured through a plain text file I can keep in version control instead of clicking through a preferences pane. That last point alone is a breath of fresh air after years of iTerm2's settings UI.
 
-Ghostty doesn't have iTerm2-style profiles in the way I used them. But it solves the problem from the other direction: it offers the capture functionality I need through AppleScript:
+Ghostty doesn't have iTerm2-style profiles in the way I used them. But it solves the problem from the other direction: it offers the capture functionality I need through [AppleScript](https://ghostty.org/docs/features/applescript):
 
 ```applescript
 tell application "Ghostty"
