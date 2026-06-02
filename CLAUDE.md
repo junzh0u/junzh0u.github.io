@@ -57,6 +57,10 @@ Mark a work-in-progress with `draft: true`: it renders in `just serve` for previ
 but is excluded from production builds (`just build` and CI), so it never reaches
 the live site until you remove the flag.
 
+Heads-up: these `.md` files are usually open in Obsidian, whose autosave races with
+external writes (its buffer can silently overwrite them) — re-read immediately before
+editing, or have the user make the change.
+
 ## Deploy & git
 
 Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds and
@@ -67,3 +71,7 @@ This repo also receives commits on `origin/master` from other Claude surfaces
 (claude.ai/code), so local `master` can be behind even when the tree is clean.
 **Always `git fetch` and check `origin/master` before rebasing or pushing**;
 prefer rebasing local work onto `origin/master` for a clean fast-forward.
+
+To verify the live site (`curl https://junz.info/`), disable the Bash sandbox —
+it blocks outbound network, which otherwise surfaces as a misleading
+`command not found: curl`.
