@@ -1,0 +1,15 @@
+---
+layout: base.njk
+bodyClass: writing-page
+ogType: article
+---
+<div class="name-block">
+  <h1 class="name">{{ title }}</h1>
+  <p class="post-date"><time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time></p>
+</div>
+
+<p class="section-label"><a href="/writing/">&larr; Writing</a></p>
+
+<article class="section-body post">
+{{ content | safe }}
+</article>
