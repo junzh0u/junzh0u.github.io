@@ -7,6 +7,7 @@
       "devDependencies": {
         "@11ty/eleventy": "^3.0.0",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+        "markdown-it-callouts": "^1.1.0",
       },
     },
   },
@@ -164,6 +165,8 @@
     "luxon": ["luxon@3.7.2", "", {}, "sha512-vtEhXh/gNjI9Yg1u4jX/0YVPMvxzHuGgCm6tC5kZyb08yjGWGnqAjGJvcXbqQR2P3MyMEFnRbpcdFS6PBcLqew=="],
 
     "markdown-it": ["markdown-it@14.2.0", "", { "dependencies": { "argparse": "^2.0.1", "entities": "^4.4.0", "linkify-it": "^5.0.1", "mdurl": "^2.0.0", "punycode.js": "^2.3.1", "uc.micro": "^2.1.0" }, "bin": { "markdown-it": "bin/markdown-it.mjs" } }, "sha512-1TGiQiJVRQ3NPmZH6sx5Cfnmg6GQm9jvC1ch4TK511NjSJvjzKLzn5pPfZRNZkRPZP0HqCioSndqH8v2nRaWVQ=="],
+
+    "markdown-it-callouts": ["markdown-it-callouts@1.1.0", "", {}, "sha512-hSdLu2QjSOjAyDUfqeUZtBsbb+hcB4X7XH0eSltXPvcIQ9hBbpDAkPJirNZaTzVo3KU//HLuH31WEv2b/LyccA=="],
 
     "mdurl": ["mdurl@2.0.0", "", {}, "sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w=="],
 

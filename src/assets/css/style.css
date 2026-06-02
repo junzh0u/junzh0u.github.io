@@ -611,6 +611,68 @@ footer {
   color: var(--syn-builtin);
 }
 
+/* Obsidian-style callouts (markup from markdown-it-callouts) */
+.post .callout {
+  --callout-accent: var(--link);
+  margin: 0 0 1rem;
+  padding: 0.85rem 1.1rem;
+  border-left: 3px solid var(--callout-accent);
+  border-radius: 6px;
+  /* a tint of the accent, not --code-bg, so callouts don't read as code
+     blocks; color-mix keeps it per-type (orange TL;DR, blue info, …) */
+  background: color-mix(in srgb, var(--callout-accent) 14%, transparent);
+}
+
+.post .callout > :last-child {
+  margin-bottom: 0;
+}
+
+/* inline-title callouts leave a trailing empty paragraph; drop it */
+.post .callout p:empty {
+  display: none;
+}
+
+.post .callout-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--callout-accent);
+}
+
+/* space the title from real body content, if any */
+.post .callout-title + * {
+  margin-top: 0.45rem;
+}
+
+/* per-type accent — info stays the default blue */
+.post .callout-tip,
+.post .callout-success,
+.post .callout-note {
+  --callout-accent: #3f7e3a;
+}
+
+.post .callout-warning,
+.post .callout-caution,
+.post .callout-danger {
+  --callout-accent: var(--accent);
+}
+
+/* TL;DR box — force the label to "TL;DR" (the plugin would title-case the
+   type to "Tldr"); hide that fallback text and render the acronym instead */
+.post .callout-tldr {
+  --callout-accent: var(--accent);
+}
+
+.post .callout-tldr .callout-title {
+  font-size: 0;
+}
+
+.post .callout-tldr .callout-title::before {
+  content: "TL;DR";
+  font-size: 1rem;
+}
+
 .post img {
   max-width: 100%;
   height: auto;

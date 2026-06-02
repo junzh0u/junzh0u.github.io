@@ -1,9 +1,20 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
-module.exports = function (eleventyConfig) {
+// markdown-it-callouts is ESM-only, so the config function is async and pulls
+// it in via dynamic import().
+module.exports = async function (eleventyConfig) {
+  const callouts = (await import("markdown-it-callouts")).default;
+
   // Tokenize fenced code blocks with PrismJS at build time (no client JS).
   // Colors live in style.css under the `.token.*` rules.
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  // Render Obsidian-style callouts (`> [!info] …`) as styled boxes. A missing
+  // title falls back to the prettified type name, matching Obsidian. Styling
+  // lives in style.css under `.callout`.
+  eleventyConfig.amendLibrary("md", (md) =>
+    md.use(callouts, { emptyTitleFallback: "match-type" })
+  );
 
   // Static files copied straight through to the site root.
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });

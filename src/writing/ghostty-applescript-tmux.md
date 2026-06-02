@@ -4,9 +4,9 @@ date: 2026-06-01
 description: Why iTerm2 kept me for years, and how Ghostty's AppleScript support finally got me to switch.
 draft: true
 ---
-## TL;DR
 
-After years on iTerm2 + tmux, I switched to Ghostty. Its AppleScript support let me stop living inside tmux for local work — and that local tmux habit was the only thing tying me to iTerm2.
+> [!tldr]
+> After years on iTerm2 + tmux, I switched to Ghostty. Its AppleScript support let me stop living inside tmux for local work — and that local tmux habit was the only thing tying me to iTerm2.
 
 ## iTerm2
 

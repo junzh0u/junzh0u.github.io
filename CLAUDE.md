@@ -61,6 +61,21 @@ Heads-up: these `.md` files are usually open in Obsidian, whose autosave races w
 external writes (its buffer can silently overwrite them) — re-read immediately before
 editing, or have the user make the change.
 
+### Markdown rendering
+
+Two markdown-it extensions run on post bodies (wired up in `.eleventy.js`):
+
+- **Syntax highlighting** — fenced code blocks are tokenized at build time by
+  PrismJS (`@11ty/eleventy-plugin-syntaxhighlight`); token colors live in the
+  `.token.*` rules in `style.css`. No client-side JS.
+- **Obsidian callouts** — `> [!type] …` blockquotes render as `.callout` boxes
+  via `markdown-it-callouts` (ESM-only, so the config function is `async` and
+  `import()`s it). Per-type accent/label come from the `.callout-*` rules in
+  `style.css`; backgrounds use an accent `color-mix` tint so callouts don't read
+  as code blocks. The custom `[!tldr]` type shows a **TL;DR** box — its label is
+  forced via CSS `::before`, since the plugin would otherwise title-case the type
+  to "Tldr".
+
 ## Deploy & git
 
 Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds and
