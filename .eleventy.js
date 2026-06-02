@@ -5,7 +5,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/apple-touch-icon.png": "apple-touch-icon.png" });
   eleventyConfig.addPassthroughCopy({ "src/og-image.png": "og-image.png" });
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
-  eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
 
   // The OG-card is a screenshot source, not a page — copy it, don't render it.
   eleventyConfig.ignores.add("src/assets/og/card.html");
