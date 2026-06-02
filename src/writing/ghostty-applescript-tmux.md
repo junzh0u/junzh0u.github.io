@@ -40,11 +40,11 @@ tmux capture-pane -pS - | pick-cmd
 
 ## iTerm2 profiles
 
-But *always* staying inside tmux has a downside: ssh-ing into other hosts becomes a nuisance, because I want to be inside tmux in the remote session too.
+But *always* staying inside tmux has a downside: ssh-ing into other hosts becomes a nuisance, because I also auto-attach to tmux on remote machines.
 
 Run `ssh remote-host` from inside a local tmux session and I'd end up with tmux inside ssh inside tmux.
 
-That's where iTerm2 profiles came to the rescue. I could set up a `remote-host` profile that skips the local tmux and runs `ssh remote-host` directly. Problem solved.
+That's where iTerm2 profiles came to the rescue. I could set up a `remote-host` profile that runs `ssh remote-host` as the command, instead of launching my normal login shell and triggering the local tmux auto-attach. Problem solved.
 
 ## Ghostty's AppleScript support
 
@@ -52,7 +52,7 @@ For all the emulators I'd tried, none could cover my iTerm2-profiles workflow �
 
 Plenty about Ghostty won me over before I even got to the niche feature I needed: it's fast, it's genuinely pretty out of the box, it has a built-in quick (drop-down) terminal, and it's configured through a plain text file I can keep in version control instead of clicking through a preferences pane. That last point alone is a breath of fresh air after years of iTerm2's settings UI.
 
-Ghostty doesn't have profiles either. But it solves the problem from the other direction: it offers native `capture-pane` functionality through AppleScript:
+Ghostty doesn't have iTerm2-style profiles in the way I used them. But it solves the problem from the other direction: it offers the capture functionality I need through AppleScript:
 
 ```applescript
 tell application "Ghostty"
@@ -61,9 +61,12 @@ tell application "Ghostty"
 end tell
 ```
 
+> [!warning] Gotcha
+> Despite its name, `write_screen_file` is the one that captures the full terminal contents I want — visible screen plus scrollback. `write_scrollback_file` sounds like the tmux equivalent, but [it leaves out the visible screen](https://github.com/ghostty-org/ghostty/issues/3496).
+
 That, together with [Ghostty's shell integration](https://ghostty.org/docs/features/shell-integration), means I finally don't *have to* live inside tmux for local sessions — it warns me before I close a pane with a command still running, and on a local machine there's no flaky connection to drop in the first place.
 
-And that's what dissolves the whole problem. The only reason I ever needed profiles was that I lived in tmux locally, so ssh-ing out nested tmux inside ssh inside tmux. Take tmux out of my local sessions and that nesting never happens — no profiles required. I still use tmux when I ssh out, which is why I wrote [this wrapper](https://gist.github.com/junzh0u/611bc9f9b728ba0bac3cdeb4b6aecfa3).
+And that's what dissolves the whole problem. The only reason I ever needed profiles was that I lived in tmux locally, so ssh-ing out stacked yet another tmux on top. Take tmux out of my local sessions and that nesting never happens — no profiles required. I still use tmux when I ssh out, which is why I wrote [this wrapper](https://gist.github.com/junzh0u/611bc9f9b728ba0bac3cdeb4b6aecfa3).
 
 ## Final picture
 
