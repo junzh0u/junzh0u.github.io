@@ -34,14 +34,28 @@ Front matter keys: `title`, `description`, `bodyClass`, and `ogType` (defaults t
 text — no raw `<`, `&`, or unescaped quotes.
 
 URLs follow Eleventy defaults: `src/uses.njk` → `/uses/`, `src/index.njk` → `/`.
-Static files (`assets/`, `CNAME`, `.nojekyll`, favicon, `og-image.png`) are
-passthrough-copied from `src/` to the site root via `.eleventy.js`.
+Static files (`assets/`, `CNAME`, favicon, `og-image.png`) are passthrough-copied
+from `src/` to the site root via `.eleventy.js`.
 
 ### Adding a page
 
 Create `src/<name>.njk` with `layout: base.njk` + front matter, and link it from
 wherever it belongs. For anything that needs a different head/nav/footer, use the
 `{% extends %}` + blocks form instead.
+
+## Writing posts
+
+Posts live in `src/writing/` — an Obsidian vault (open *that folder* in Obsidian).
+Each `.md` becomes `/writing/<slug>/` and is listed on the `/writing/` index; front
+matter is `title`, `date`, `description`. Keep filenames hyphenated — they become
+URL slugs.
+
+Post bodies are **not** run through a template engine, so literal `{{ }}` / `{% %}`
+(e.g. in code samples) render as-is; raw HTML works too.
+
+Mark a work-in-progress with `draft: true`: it renders in `just serve` for preview
+but is excluded from production builds (`just build` and CI), so it never reaches
+the live site until you remove the flag.
 
 ## Deploy & git
 

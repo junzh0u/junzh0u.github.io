@@ -26,6 +26,14 @@ module.exports = function (eleventyConfig) {
   );
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
 
+  // Draft posts: `draft: true` keeps a file out of production builds (and the
+  // live site) while still rendering in serve/watch for local preview.
+  eleventyConfig.addPreprocessor("drafts", "*", (data) => {
+    if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
+      return false;
+    }
+  });
+
   return {
     dir: {
       input: "src",
