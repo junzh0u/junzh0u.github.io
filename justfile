@@ -1,15 +1,22 @@
 default:
     @just --list
 
-# Build the static site into _site/
-build:
+# Without an install, `bunx @11ty/eleventy` floats to the latest published Eleventy
+# and ignores bun.lock; build/serve depend on this so the pinned version is always
+# used. (CI installs separately with --frozen-lockfile.)
+# Install pinned dependencies from bun.lock.
+install:
+    bun install
+
+# Build the static site into _site/.
+build: install
     bunx @11ty/eleventy
 
-# Serve with live reload (Eleventy dev server, http://localhost:8080)
-serve:
+# Serve with live reload (Eleventy dev server, http://localhost:8080).
+serve: install
     bunx @11ty/eleventy --serve
 
-# Regenerate the Open Graph preview image (src/og-image.png) from src/assets/og/card.html
+# Regenerate the Open Graph preview image (src/og-image.png) from src/assets/og/card.html.
 og:
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
       --headless=new --hide-scrollbars --disable-gpu \
