@@ -8,6 +8,14 @@
   --rule: #d4d1cc;
   --code-bg: rgba(0, 0, 0, 0.055);
 
+  /* syntax highlighting (Prism tokens) */
+  --syn-comment: #9a958c;
+  --syn-keyword: var(--accent);
+  --syn-string: #3f7e3a;
+  --syn-func: var(--link);
+  --syn-const: #8a4ec2;
+  --syn-builtin: #c2410c;
+
   --body-font-size: 18px;
   --body-line-height: 1.65;
 
@@ -555,6 +563,54 @@ footer {
   font-size: inherit;
 }
 
+/* Prism token colors — see the --syn-* variables for light/dark hues */
+.post .token.comment,
+.post .token.prolog,
+.post .token.doctype,
+.post .token.cdata {
+  color: var(--syn-comment);
+  font-style: italic;
+}
+
+.post .token.punctuation {
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.post .token.keyword,
+.post .token.operator,
+.post .token.atrule,
+.post .token.tag {
+  color: var(--syn-keyword);
+}
+
+.post .token.string,
+.post .token.char,
+.post .token.attr-value,
+.post .token.regex,
+.post .token.url {
+  color: var(--syn-string);
+}
+
+.post .token.function,
+.post .token.class-name,
+.post .token.attr-name,
+.post .token.property {
+  color: var(--syn-func);
+}
+
+.post .token.number,
+.post .token.boolean,
+.post .token.constant,
+.post .token.symbol,
+.post .token.variable {
+  color: var(--syn-const);
+}
+
+.post .token.builtin {
+  color: var(--syn-builtin);
+}
+
 .post img {
   max-width: 100%;
   height: auto;
@@ -609,6 +665,14 @@ footer {
   :root {
     --rule: #3a3d42;
     --code-bg: rgba(255, 255, 255, 0.08);
+
+    /* lighter token hues for contrast on the dark code background */
+    --syn-comment: #7c8089;
+    --syn-keyword: #f0915e;
+    --syn-string: #9ece6a;
+    --syn-const: #cba6f7;
+    --syn-builtin: #ffa657;
+    /* --syn-func inherits the dark --link (#8ab4f8) */
   }
 }
 

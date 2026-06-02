@@ -1,4 +1,10 @@
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 module.exports = function (eleventyConfig) {
+  // Tokenize fenced code blocks with PrismJS at build time (no client JS).
+  // Colors live in style.css under the `.token.*` rules.
+  eleventyConfig.addPlugin(syntaxHighlight);
+
   // Static files copied straight through to the site root.
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
