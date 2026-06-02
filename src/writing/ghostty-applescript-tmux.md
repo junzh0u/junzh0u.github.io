@@ -2,7 +2,6 @@
 title: Ghostty's AppleScript support replaced my tmux habit
 date: 2026-06-01
 description: Why iTerm2 kept me for years, and how Ghostty's AppleScript support finally got me to switch.
-draft: true
 ---
 
 > [!tldr]
