@@ -1,0 +1,62 @@
+---
+title: Jun Zhou
+description: I code, both for a living and for fun.
+bodyClass: home-page
+---
+{% extends "base.njk" %}
+
+{% block head %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jun Zhou",
+    "givenName": "Jun",
+    "familyName": "Zhou",
+    "url": "https://junz.info/",
+    "jobTitle": "Staff Software Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Meta",
+      "url": "https://www.meta.com/"
+    },
+    "sameAs": [
+      "https://github.com/junzh0u",
+      "https://www.linkedin.com/in/junzh0u",
+      "https://junz.notion.site/",
+      "https://makerworld.com/en/@junz",
+      "https://rebrickable.com/users/junz"
+    ]
+  }
+  </script>
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+    <div class="name-block">
+      <h1 class="site-title">
+        <a href="/">junz<em>hou</em>.info</a>
+      </h1>
+      <p class="tagline subtle-links">I code, both <a href="https://www.linkedin.com/in/junzh0u">for a living</a> and <a href="/built/">for fun</a>.</p>
+    </div>
+
+    <h2 class="section-label">Work</h2>
+    <section class="section-body">
+      <p>Over a decade at Meta building developer infrastructure &mdash; RPC frameworks, deployment platforms, and the tooling other engineers depend on.</p>
+      <p class="cta"><a href="/resume/">View résumé <span aria-hidden="true">&rarr;</span></a></p>
+    </section>
+
+    <h2 class="section-label">Tinkering</h2>
+    <section class="section-body">
+      <p>I like homelab, photography, woodworking, 3D printing, and LEGO. I also enjoy building (sometimes over-engineered) open-source tools.</p>
+      <p class="cta"><a href="/built/">What I built <span aria-hidden="true">&rarr;</span></a><br><a href="/uses/">What I use <span aria-hidden="true">&rarr;</span></a></p>
+    </section>
+
+    <h2 class="section-label">Contact</h2>
+    <section class="section-body">
+      <p>Reach me by <a href="mailto:junz@junz.info">email</a> or <a href="https://chat.junz.info/">book a chat</a>.</p>
+      <p class="cta"><a href="/now/">What I&rsquo;m up to now <span aria-hidden="true">&rarr;</span></a></p>
+    </section>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ title | safe }}</title>
+  <meta name="description" content="{{ description | safe }}">
+  <meta name="author" content="Jun Zhou">
+  <link rel="canonical" href="https://junz.info{{ page.url }}">
+
+  <meta property="og:title" content="{{ title | safe }}">
+  <meta property="og:description" content="{{ description | safe }}">
+  <meta property="og:url" content="https://junz.info{{ page.url }}">
+  <meta property="og:site_name" content="Jun Zhou">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://junz.info/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title | safe }}">
+  <meta name="twitter:image" content="https://junz.info/og-image.png">
+
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/icons/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  {%- block head %}{% endblock %}
+</head>
+<body class="{{ bodyClass }}">
+  {%- block nav %}
+  <nav class="page-nav">
+    <a href="/">&larr; junz.info</a>
+  </nav>
+  {%- endblock %}
+
+  <main class="page-grid">
+{% block content %}{{ content | safe }}{% endblock %}
+  </main>
+
+{% block footer %}{% include "footer.njk" %}{% endblock %}
+</body>
+</html>

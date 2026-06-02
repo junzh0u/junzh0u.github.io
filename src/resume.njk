@@ -1,35 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+title: Jun Zhou — Résumé
+description: Résumé of Jun Zhou — Staff Software Engineer at Meta.
+bodyClass: resume-page
+ogType: profile
+---
+{% extends "base.njk" %}
 
-  <title>Jun Zhou — Résumé</title>
-  <meta name="description" content="Résumé of Jun Zhou — Staff Software Engineer at Meta.">
-  <meta name="author" content="Jun Zhou">
-  <link rel="canonical" href="https://junz.info/resume/">
-
-  <meta property="og:title" content="Jun Zhou — Résumé">
-  <meta property="og:description" content="Résumé of Jun Zhou — Staff Software Engineer at Meta.">
-  <meta property="og:url" content="https://junz.info/resume/">
-  <meta property="og:site_name" content="Jun Zhou">
-  <meta property="og:type" content="profile">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://junz.info/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jun Zhou — Résumé">
-  <meta name="twitter:image" content="https://junz.info/og-image.png">
-
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/assets/icons/site.webmanifest">
-  <meta name="theme-color" content="#ffffff">
-
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body class="resume-page">
+{% block nav %}
   <nav class="resume-nav">
     <a href="/">&larr; junz.info</a>
     <button type="button" class="print-button" onclick="window.print()">
@@ -37,8 +14,9 @@
       Print
     </button>
   </nav>
+{% endblock %}
 
-  <main class="page-grid">
+{% block content %}
     <div class="name-block">
       <h1 class="name">Jun Zhou</h1>
       <p class="role">Staff Software Engineer</p>
@@ -109,10 +87,10 @@
         <p class="meta"><time>2006 &ndash; 2010</time></p>
       </article>
     </section>
-  </main>
+{% endblock %}
 
+{% block footer %}
   <footer class="resume-print-footer">
     Latest version at <a href="https://junz.info/resume/">junz.info/resume</a>
   </footer>
-</body>
-</html>
+{% endblock %}

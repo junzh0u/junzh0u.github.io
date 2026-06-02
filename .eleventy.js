@@ -1,0 +1,22 @@
+module.exports = function (eleventyConfig) {
+  // Static files copied straight through to the site root.
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
+  eleventyConfig.addPassthroughCopy({ "src/apple-touch-icon.png": "apple-touch-icon.png" });
+  eleventyConfig.addPassthroughCopy({ "src/og-image.png": "og-image.png" });
+  eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
+  eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
+
+  // The OG-card is a screenshot source, not a page — copy it, don't render it.
+  eleventyConfig.ignores.add("src/assets/og/card.html");
+
+  return {
+    dir: {
+      input: "src",
+      includes: "_includes",
+      output: "_site",
+    },
+    // Process bare .html files (e.g. the /chat redirect) through Nunjucks too.
+    htmlTemplateEngine: "njk",
+  };
+};
