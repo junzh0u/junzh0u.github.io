@@ -62,13 +62,12 @@ main {
   text-decoration: none;
 }
 
-.site-title em {
+.site-title span {
   color: var(--muted);
-  font-style: normal;
   transition: color 150ms ease;
 }
 
-.site-title a:hover em {
+.site-title a:hover span {
   color: var(--accent);
 }
 
