@@ -9,11 +9,29 @@ ogType: profile
 {% block nav %}
   <nav class="resume-nav">
     <a href="/">&larr; junz.info</a>
-    <button type="button" class="print-button" onclick="window.print()">
+    <button type="button" class="print-button" id="print-button">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
       Print
     </button>
   </nav>
+  <script>
+    // Defer print() past the next paint so it doesn't pin INP to the time the
+    // print dialog stays open; the guard drops repeat clicks fired before it opens.
+    (function () {
+      var button = document.getElementById("print-button");
+      var printing = false;
+      button.addEventListener("click", function () {
+        if (printing) return;
+        printing = true;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            window.print();
+            printing = false;
+          });
+        });
+      });
+    })();
+  </script>
 {% endblock %}
 
 {% block content %}
