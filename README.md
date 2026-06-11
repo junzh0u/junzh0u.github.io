@@ -1,3 +1,5 @@
+[![Deploy to GitHub Pages](https://github.com/junzh0u/junzh0u.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/junzh0u/junzh0u.github.io/actions/workflows/deploy.yml)
+
 # junz.info
 
 Source for [junz.info](https://junz.info/) — a small static site built with
