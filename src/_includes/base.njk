@@ -12,9 +12,13 @@
       flash white between pages; this inline style paints the canvas in the
       final colors synchronously at parse time. Keep in sync with --bg in
       assets/css/style.css. #}
+  {#- screen-only: in print the html background would paint the page below
+      where the body's white ends (a tinted band at the bottom of the PDF) #}
   <style>
-    html { background-color: #faf6ef; }
-    @media (prefers-color-scheme: dark) {
+    @media screen {
+      html { background-color: #faf6ef; }
+    }
+    @media screen and (prefers-color-scheme: dark) {
       html { background-color: #211c17; }
     }
   </style>
