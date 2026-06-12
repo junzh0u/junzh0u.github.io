@@ -35,7 +35,7 @@ Stage by stage.
 
 ## Stage 1: scrollback out of any terminal
 
-In tmux, dumping scrollback is built in: `tmux capture-pane -pS -` prints the whole buffer to stdout. But since [I stopped living inside tmux locally](/writing/ghostty-applescript-tmux/), half my sessions are plain Ghostty, where the same capability goes through AppleScript instead. So `capture-pane` on my `PATH` is [a wrapper](https://github.com/junzh0u/copy-that/blob/main/capture-pane) named after the tmux command it generalizes:
+In tmux, dumping scrollback is built in: `tmux capture-pane -pS -` prints the whole buffer to stdout. That was all I needed until [I stopped living inside tmux locally](/writing/ghostty-applescript-tmux/) — suddenly half my sessions were plain Ghostty, and the tools I'd built on `capture-pane` had nothing to read from. Ghostty has the same capability, just behind AppleScript instead of a CLI. So I wrote [a wrapper](https://github.com/junzh0u/copy-that/blob/main/capture-pane), kept the tmux name, and put it on my `PATH`:
 
 ```zsh
 if [[ -n $TMUX ]]; then
@@ -116,7 +116,7 @@ A `❯` line opens a block; a `󱞩` line seals it. (Before any of this, the inp
 
 The blocks go into fzf with `--tac` (newest first), `+s` (keep scrollback order while filtering), and `--multi` (grab several at once); the list shows just the command lines, the preview shows the full block, and whatever I pick is printed to stdout.
 
-Keying a parser off a bespoke prompt sounds fragile, and it would be — except the prompt config and the parser are installed together on every machine I touch: the starship config lives in my dotfiles, and the scripts ship as [copy-that](https://github.com/junzh0u/copy-that), pinned to those same dotfiles as a submodule. The delimiter travels with the parser. (Yours doesn't have to match mine — the markers are a pair of env vars.) That, plus needing nothing but stdlib Python and fzf, is what makes stage 2 portable: it doesn't care about terminals or hosts at all, only about text.
+Keying a parser off a bespoke prompt sounds fragile, and it would be — except the prompt and the parser are installed together on every machine I touch: the starship config lives in my dotfiles, and these scripts are pinned to those same dotfiles as a [copy-that](https://github.com/junzh0u/copy-that) submodule, so they can't drift apart. (Yours doesn't have to match mine, either — the markers are a pair of env vars.) Beyond that, `pick-cmd` needs nothing but stdlib Python and fzf: it never looks at the terminal or the host, only at the text.
 
 ## Stage 3: a clipboard that might be three hops away
 
@@ -143,16 +143,16 @@ The tmux branch matters because on remote hosts I *am* in tmux, and tmux owns th
 > [!warning] Gotcha
 > The inner `\033` has to be doubled inside the tmux wrapper — tmux's passthrough eats one level of escaping. Drop it and you'll copy a string that's missing its first byte, which is a wonderfully confusing bug to chase.
 
-What stitches this into `copy-that` is one line in my `.zshrc`:
+The last piece is one line in my `.zshrc`:
 
 ```zsh
 (( $+commands[pbcopy] )) || alias pbcopy=osc52
 ```
 
-Any box without a real `pbcopy` grows one. The alias text never changes; its last stage just quietly swaps implementations under it. (As a bonus, everything else I habitually pipe into `pbcopy` gains the same over-SSH superpower for free.)
+Now any box without a real `pbcopy` has one. The alias never changes; on remote machines its last stage just quietly becomes `osc52`. (As a bonus, everything else I habitually pipe into `pbcopy` gains the same over-SSH superpower for free.)
 
 ## The same alias everywhere
 
-So: local Ghostty, `copy-that` captures via AppleScript and copies with real `pbcopy`. Remote tmux over SSH, it captures via `tmux capture-pane` and the copy rides home as an OSC 52 sequence through the passthrough. Local tmux, nested sessions — some other mix of the same parts. I never think about which case I'm in, because each stage absorbs exactly one difference: `capture-pane` hides the terminal, the `pbcopy` polyfill hides the host, and `pick-cmd` between them only ever sees text.
+So: in local Ghostty, `copy-that` captures through AppleScript and copies with the real `pbcopy`. In remote tmux over SSH, it captures with `tmux capture-pane` and the copy comes home as an OSC 52 escape. Local tmux, nested sessions — some other mix of the same parts. I never think about which case I'm in. The wrapper picks the right capture, the polyfill picks the right copy, and `pick-cmd` in the middle just reads text.
 
-None of it is clever on its own — maybe forty lines of shell and a hundred of Python. But it's the machinery that let the one feature I couldn't give up come along when I left tmux behind, and at this point those two letters are muscle memory I'd miss on any machine that didn't have them. Fortunately, none of mine are missing them.
+None of it is clever on its own — maybe forty lines of shell and a hundred of Python. But it's why leaving tmux cost me nothing: the one feature I couldn't give up came along, and my fingers never had to learn a thing.
