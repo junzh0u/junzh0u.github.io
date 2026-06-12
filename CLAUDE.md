@@ -27,8 +27,11 @@ The visual theme ("editorial craft": warm paper/ink, serif type) lives entirely
 in `src/assets/css/style.css`:
 
 - **Fonts** are self-hosted latin-subset variable woff2 files in
-  `src/assets/fonts/` (Fraunces for display, Newsreader for body), preloaded
-  from `base.njk`. No runtime Google Fonts dependency.
+  `src/assets/fonts/` (Fraunces for display, Newsreader for body, Public Sans
+  for UI text — labels/dates/contact/nav), preloaded from `base.njk`. No
+  runtime Google Fonts dependency. Public Sans must stay the *screen* UI font:
+  print-only font loading is unreliable in Chrome, and a system-UI stack in
+  print makes dialog PDFs (SF/Helvetica) diverge from the CI PDF (Liberation).
 - **Light/dark** is one `light-dark()` palette under `color-scheme: light dark`
   — there is no dark `@media` block. To force a scheme (e.g. for screenshots),
   rewrite that `color-scheme` declaration to `dark` or `light`.

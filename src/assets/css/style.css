@@ -25,9 +25,10 @@
   font-display: swap;
 }
 
-/* print-only (referenced solely by the print --font-ui, so browsers never
-   fetch it on screen): pins the sans for labels/dates/contact so dialog
-   prints match the CI-generated /resume.pdf on every platform */
+/* UI sans for labels/dates/contact/nav. Self-hosted (not a system stack) so
+   screen, dialog prints, and the CI-generated /resume.pdf set identical type
+   on every platform — print-only font loading is unreliable in Chrome, so it
+   must be the screen font to be guaranteed loaded when printing. */
 @font-face {
   font-family: "Public Sans";
   src: url("/assets/fonts/PublicSans.woff2") format("woff2");
@@ -60,7 +61,7 @@
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-ui: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
   --body-font-size: 20px;
@@ -892,8 +893,6 @@ footer {
     --link: #111;
     --link-hover: #111;
     --bg: #fff;
-    /* pinned face so local dialog prints and the CI PDF set identical type */
-    --font-ui: "Public Sans", Helvetica, Arial, sans-serif;
   }
 
   .resume-page {
