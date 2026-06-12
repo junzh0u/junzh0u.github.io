@@ -6,8 +6,14 @@ module.exports = async function (eleventyConfig) {
   const callouts = (await import("markdown-it-callouts")).default;
 
   // Tokenize fenced code blocks with PrismJS at build time (no client JS).
-  // Colors live in style.css under the `.token.*` rules.
-  eleventyConfig.addPlugin(syntaxHighlight);
+  // Colors live in style.css under the `.token.*` rules. Prism has no zsh
+  // grammar, so alias it to bash — otherwise ```zsh fences render untokenized.
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    init: function ({ Prism }) {
+      require("prismjs/components/")(["bash"]);
+      Prism.languages.zsh = Prism.languages.bash;
+    },
+  });
 
   // Render Obsidian-style callouts (`> [!info] …`) as styled boxes. A missing
   // title falls back to the prettified type name, matching Obsidian. Styling
