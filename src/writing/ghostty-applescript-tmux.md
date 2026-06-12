@@ -35,7 +35,7 @@ So often I want to capture the output of a command **after** I've already run it
 tmux capture-pane -pS - | pick-cmd
 ```
 
-`pick-cmd` is [a script I wrote](https://gist.github.com/junzh0u/8cf5cc0abb51b8a2d68fa83e4911e9b9): it reads from stdin, parses command boundaries (by looking for my custom [starship](https://starship.rs/) prompt as the delimiter), presents them in fzf, and prints the selected command blocks to stdout. Very convenient.
+`pick-cmd` is [a script I wrote](https://github.com/junzh0u/copy-that/blob/main/pick-cmd): it reads from stdin, parses command boundaries (by looking for my custom [starship](https://starship.rs/) prompt as the delimiter), presents them in fzf, and prints the selected command blocks to stdout. Very convenient.
 
 ## iTerm2 profiles
 
@@ -65,7 +65,7 @@ end tell
 
 That replaces `capture-pane`. The other thing tmux gave me, continuity, hardly matters on a local machine: there's no flaky connection to drop, and [Ghostty's shell integration](https://ghostty.org/docs/features/shell-integration) warns me before I close a window with a command still running. For the first time, I don't *have to* live inside tmux locally.
 
-With local tmux gone, `ssh remote-host` from a plain Ghostty window lands me in exactly one tmux — the remote one. No nesting, no profiles required. The only wrinkle: my capture trick now has to work in two worlds, Ghostty locally and tmux over ssh. So I wrapped both in [a small script](https://gist.github.com/junzh0u/611bc9f9b728ba0bac3cdeb4b6aecfa3) that detects which one it's running in and uses the matching capture method.
+With local tmux gone, `ssh remote-host` from a plain Ghostty window lands me in exactly one tmux — the remote one. No nesting, no profiles required. The only wrinkle: my capture trick now has to work in two worlds, Ghostty locally and tmux over ssh. So I wrapped both in [a small script](https://github.com/junzh0u/copy-that/blob/main/capture-pane) that detects which one it's running in and uses the matching capture method.
 
 ## Final picture
 
