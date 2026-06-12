@@ -105,7 +105,7 @@ A `❯` line opens a block; a `󱞩` line seals it. (Before any of this, the inp
 
 The blocks go into fzf with `--tac` (newest first), `+s` (keep scrollback order while filtering), and `--multi` (grab several at once); the list shows just the command lines, the preview shows the full block, and whatever I pick is printed to stdout.
 
-Keying a parser off a bespoke prompt sounds fragile, and it would be — except the prompt config and the parser are installed together on every machine I touch: the starship config lives in my dotfiles, and the scripts ship as [copy-that](https://github.com/junzh0u/copy-that), pinned to those same dotfiles as a submodule. The delimiter travels with the parser. That, plus needing nothing but stdlib Python and fzf, is what makes stage 2 portable: it doesn't care about terminals or hosts at all, only about text.
+Keying a parser off a bespoke prompt sounds fragile, and it would be — except the prompt config and the parser are installed together on every machine I touch: the starship config lives in my dotfiles, and the scripts ship as [copy-that](https://github.com/junzh0u/copy-that), pinned to those same dotfiles as a submodule. The delimiter travels with the parser. (Yours doesn't have to match mine — the markers are a pair of env vars.) That, plus needing nothing but stdlib Python and fzf, is what makes stage 2 portable: it doesn't care about terminals or hosts at all, only about text.
 
 ## Stage 3: a clipboard that might be three hops away
 
