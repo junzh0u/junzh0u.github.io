@@ -1,8 +1,7 @@
 ---
 title: copy-that — copy any command's output from anywhere
-date: 2026-06-02
+date: 2026-06-12
 description: A deep dive on copy-that — capture-pane | pick-cmd | pbcopy — and how one alias copies any past command's output in tmux or Ghostty, locally or over SSH.
-draft: true
 ---
 
 > [!tldr]
@@ -123,9 +122,11 @@ Keying a parser off a bespoke prompt sounds fragile, and it would be — except 
 
 On my Mac, `pbcopy` is the real thing and stage 3 is boring. The interesting case is when `copy-that` runs on a remote box: there's no clipboard there, and forwarding one over SSH means X11, which is slow and usually disabled anyway.
 
-The answer is OSC 52, an escape sequence that asks the *terminal emulator* — which is running on my Mac, however many hops away — to write its own clipboard. The remote side just prints bytes; they ride the existing SSH connection home. My whole `osc52` script is basically one `printf`:
+The answer is [OSC 52](https://invisible-island.net/xterm/ctlseqs/ctlseqs.html), an escape sequence that asks the *terminal emulator* — which is running on my Mac, however many hops away — to write its own clipboard. The remote side just prints bytes; they ride the existing SSH connection home. My whole `osc52` script is basically one `printf`:
 
 ```sh
+input=$(cat)
+
 encoded=$(printf "%s" "$input" | base64 | tr -d '\n')
 esc="\033]52;c;${encoded}\a"
 
