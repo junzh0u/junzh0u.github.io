@@ -1,23 +1,63 @@
+/* Editorial-craft theme: warm paper & ink, serif display (Fraunces) + serif
+   body (Newsreader). One palette via light-dark(); color-scheme picks the side. */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/assets/fonts/Newsreader.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/assets/fonts/Newsreader-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
-  --text: #1a1a1a;
-  --muted: #b0b0b0;
-  --link: #2a7ae2;
-  --link-hover: #1756a9;
-  --bg: #ffffff;
-  --accent: #e0612d;
-  --rule: #d4d1cc;
-  --code-bg: rgba(0, 0, 0, 0.055);
+  color-scheme: light dark;
+
+  --text: light-dark(#2b2520, #ece5da);
+  --muted: light-dark(#8a7f73, #998e81);
+  --link: light-dark(#b34a23, #e98b5f);
+  --link-hover: light-dark(#8f3a1b, #f2a37e);
+  --bg: light-dark(#faf6ef, #211c17);
+  --accent: light-dark(#c14f26, #e98b5f);
+  --info: light-dark(#3a6ea5, #89b4e8);
+  --rule: light-dark(#e0d8cc, #3b332b);
+  --code-bg: light-dark(rgba(43, 37, 32, 0.06), rgba(255, 255, 255, 0.07));
 
   /* syntax highlighting (Prism tokens) */
-  --syn-comment: #9a958c;
+  --syn-comment: light-dark(#9c9286, #847b6f);
   --syn-keyword: var(--accent);
-  --syn-string: #3f7e3a;
-  --syn-func: var(--link);
-  --syn-const: #8a4ec2;
-  --syn-builtin: #c2410c;
+  --syn-string: light-dark(#4a7c44, #a3c585);
+  --syn-func: var(--info);
+  --syn-const: light-dark(#8a4ec2, #c9a3ef);
+  --syn-builtin: light-dark(#b4540a, #e8975c);
 
-  --body-font-size: 18px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --body-font-size: 20px;
   --body-line-height: 1.65;
+
+  /* load-reveal motion tokens */
+  --rise-duration: 0.5s;
+  --rise-ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --rise-step: 60ms;
 
   /* shared max-width for nav, main, and footer across every page */
   --content-width: 56rem;
@@ -31,9 +71,13 @@ html, body {
 }
 
 body {
-  background: var(--bg);
+  /* faint warm glow bleeding down from the top edge, over the paper tone */
+  background:
+    radial-gradient(120rem 40rem at 50% -20rem,
+      color-mix(in srgb, var(--accent) 6%, transparent), transparent),
+    var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: var(--body-font-size);
   line-height: var(--body-line-height);
   -webkit-font-smoothing: antialiased;
@@ -41,6 +85,40 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 4rem 1.5rem 2rem;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+/* page-load reveal + cross-page fade; both sit out under reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.6rem);
+    }
+  }
+
+  .page-grid > * {
+    animation: rise var(--rise-duration) var(--rise-ease) backwards;
+    /* sibling-index() staggers without per-child rules; where unsupported the
+       delay is dropped and everything rises together */
+    animation-delay: calc(sibling-index() * var(--rise-step));
+  }
 }
 
 main {
@@ -51,10 +129,11 @@ main {
 }
 
 .site-title {
-  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.25rem);
   font-weight: 600;
   margin: 0 0 0.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .site-title a {
@@ -73,8 +152,9 @@ main {
 
 .tagline {
   color: var(--muted);
+  font-style: italic;
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 .subtle-links a {
@@ -92,17 +172,22 @@ p {
 
 a {
   color: var(--link);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
 }
 
 a:hover {
   color: var(--link-hover);
-  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
 
 .cta a {
   color: var(--accent);
   font-weight: 600;
+  text-decoration: none;
 }
 
 .cta a:hover {
@@ -137,11 +222,12 @@ footer {
 .social a {
   display: inline-flex;
   color: var(--muted);
-  transition: color 150ms ease;
+  transition: color 150ms ease, transform 150ms ease;
 }
 
 .social a:hover {
-  color: var(--text);
+  color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .social svg {
@@ -151,14 +237,7 @@ footer {
   display: block;
 }
 
-/* --- Resume page --- */
-
-.resume-page,
-.built-page,
-.uses-page,
-.now-page {
-  padding-top: 2.5rem;
-}
+/* --- Site nav (inner pages) --- */
 
 .resume-nav,
 .page-nav {
@@ -168,7 +247,9 @@ footer {
   font-size: 0.95rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .resume-nav a,
@@ -180,6 +261,40 @@ footer {
 .resume-nav a:hover,
 .page-nav a:hover {
   color: var(--text);
+}
+
+.nav-home {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.page-nav a.nav-home {
+  color: var(--text);
+}
+
+.nav-home span {
+  color: var(--muted);
+  transition: color 150ms ease;
+}
+
+.page-nav a.nav-home:hover span {
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--accent);
 }
 
 .print-button {
@@ -205,6 +320,15 @@ footer {
   fill: currentColor;
 }
 
+/* --- Page scaffold (marginal labels) --- */
+
+.resume-page,
+.built-page,
+.uses-page,
+.now-page {
+  padding-top: 2.5rem;
+}
+
 .page-grid {
   display: grid;
   grid-template-columns: 9rem 1fr;
@@ -220,11 +344,12 @@ footer {
 }
 
 .name {
-  font-size: 2.75rem;
-  font-weight: 700;
-  line-height: 1;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.05;
   margin: 0;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 
 .role {
@@ -242,7 +367,8 @@ footer {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 0.95rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
@@ -263,6 +389,7 @@ footer {
 
 .contact a {
   color: var(--text);
+  text-decoration: none;
 }
 
 .contact a:hover {
@@ -288,12 +415,13 @@ footer {
 
 .section-label {
   grid-column: 1;
+  font-family: var(--font-ui);
   font-size: 0.85rem;
   /* Derive label's line-box from body's typographic values so the label's
      selection rectangle aligns with body's first line in both top and
      bottom. (rem can't express this — rem is rooted to <html>'s 16px,
-     not body's 18px.) The transparent border mirrors body's 1px rule so
-     line-box tops sit at the same Y. */
+     not body's font size.) The transparent border mirrors body's 1px rule
+     so line-box tops sit at the same Y. */
   line-height: calc(var(--body-font-size) * var(--body-line-height));
   border-top: 1px solid transparent;
   font-weight: 700;
@@ -311,7 +439,7 @@ footer {
   left: 0;
   width: 0.875rem;
   height: 1px;
-  background: var(--rule);
+  background: var(--accent);
 }
 
 .section-body {
@@ -331,7 +459,7 @@ footer {
 }
 
 .job-title strong {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .role-block {
@@ -348,7 +476,8 @@ footer {
 
 .meta {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
   margin: 0 0 0.15rem;
 }
 
@@ -374,9 +503,10 @@ footer {
 /* --- Projects page --- */
 
 .project-name {
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   /* top margin separates stacked project entries within one section */
   margin: 1.5rem 0 0.4rem;
 }
@@ -407,8 +537,8 @@ footer {
 }
 
 .section-body code {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.85em;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
   background: var(--code-bg);
   padding: 0.1em 0.35em;
   border-radius: 4px;
@@ -434,7 +564,7 @@ footer {
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--rule);
   /* faint placeholder tint before the image paints */
   background: var(--code-bg);
@@ -442,7 +572,8 @@ footer {
 
 .gallery figcaption {
   margin-top: 0.45rem;
-  font-size: 0.8rem;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
   color: var(--muted);
 }
 
@@ -472,7 +603,7 @@ footer {
   grid-column: 2;
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .uses-credit a {
@@ -496,7 +627,8 @@ footer {
 
 .now-updated {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
   margin: 0;
 }
 
@@ -504,7 +636,8 @@ footer {
 
 .post-date {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
   margin: 0.5rem 0 0;
 }
 
@@ -523,15 +656,17 @@ footer {
 }
 
 .post h2 {
-  font-size: 1.3rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin: 2rem 0 0.5rem;
   color: var(--accent);
 }
 
 .post h3 {
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
   font-weight: 600;
   margin: 1.5rem 0 0.4rem;
 }
@@ -551,7 +686,8 @@ footer {
   padding: 1rem 1.1rem;
   border-radius: 8px;
   overflow-x: auto;
-  font-size: 0.85em;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
   line-height: 1.5;
   margin: 0 0 1rem;
 }
@@ -613,7 +749,7 @@ footer {
 
 /* Obsidian-style callouts (markup from markdown-it-callouts) */
 .post .callout {
-  --callout-accent: var(--link);
+  --callout-accent: var(--info);
   margin: 0 0 1rem;
   padding: 0.85rem 1.1rem;
   border-left: 3px solid var(--callout-accent);
@@ -649,7 +785,7 @@ footer {
 .post .callout-tip,
 .post .callout-success,
 .post .callout-note {
-  --callout-accent: #3f7e3a;
+  --callout-accent: var(--syn-string);
 }
 
 .post .callout-warning,
@@ -676,7 +812,7 @@ footer {
 .post img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 @media (max-width: 640px) {
@@ -715,31 +851,9 @@ footer {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #e8e6e3;
-    --muted: #8a8580;
-    --link: #8ab4f8;
-    --link-hover: #c0d6fd;
-    --bg: #22252a;
-  }
-
-  :root {
-    --rule: #3a3d42;
-    --code-bg: rgba(255, 255, 255, 0.08);
-
-    /* lighter token hues for contrast on the dark code background */
-    --syn-comment: #7c8089;
-    --syn-keyword: #f0915e;
-    --syn-string: #9ece6a;
-    --syn-const: #cba6f7;
-    --syn-builtin: #ffa657;
-    /* --syn-func inherits the dark --link (#8ab4f8) */
-  }
-}
-
 @media print {
   :root {
+    color-scheme: light;
     --text: #111;
     --muted: #555;
     --link: #111;
@@ -754,6 +868,7 @@ footer {
   }
 
   body {
+    background: var(--bg);
     font-size: 10.5pt;
     line-height: 1.4;
     min-height: 0;

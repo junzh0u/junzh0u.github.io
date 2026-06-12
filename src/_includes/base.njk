@@ -25,15 +25,24 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/assets/icons/site.webmanifest">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf6ef">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#211c17">
 
+  <link rel="preload" href="/assets/fonts/Fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
   {%- block head %}{% endblock %}
 </head>
 <body class="{{ bodyClass }}">
   {%- block nav %}
   <nav class="page-nav">
-    <a href="/">&larr; junz.info</a>
+    <a class="nav-home" href="/" aria-label="junz.info — home">junz<span>hou</span>.info</a>
+    <ul class="nav-links">
+      <li><a href="/built/"{% if page.url == '/built/' %} aria-current="page"{% endif %}>Built</a></li>
+      <li><a href="/writing/"{% if '/writing/' in page.url %} aria-current="page"{% endif %}>Writing</a></li>
+      <li><a href="/uses/"{% if page.url == '/uses/' %} aria-current="page"{% endif %}>Uses</a></li>
+      <li><a href="/now/"{% if page.url == '/now/' %} aria-current="page"{% endif %}>Now</a></li>
+    </ul>
   </nav>
   {%- endblock %}
 

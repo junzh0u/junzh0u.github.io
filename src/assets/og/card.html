@@ -7,16 +7,36 @@
     to regenerate /og-image.png. Tokens mirror assets/css/style.css.
   -->
   <style>
+    /* relative URLs: this card renders via file://, not from the site root */
+    @font-face {
+      font-family: "Fraunces";
+      src: url("../fonts/Fraunces.woff2") format("woff2");
+      font-weight: 600 700;
+    }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("../fonts/Newsreader.woff2") format("woff2");
+      font-weight: 400 600;
+    }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("../fonts/Newsreader-Italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+    }
     :root {
-      --text: #1a1a1a;
-      --muted: #b0b0b0;
-      --bg: #ffffff;
-      --accent: #e0612d;
+      --text: #2b2520;
+      --muted: #8a7f73;
+      --bg: #faf6ef;
+      --accent: #c14f26;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 1200px; height: 630px; }
     body {
-      background: var(--bg);
+      background:
+        radial-gradient(1100px 380px at 50% -190px,
+          color-mix(in srgb, var(--accent) 6%, transparent), transparent),
+        var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -45,9 +65,10 @@
       background: var(--accent);
     }
     .wordmark {
+      font-family: "Fraunces", Georgia, serif;
       font-size: 128px;
       font-weight: 600;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.01em;
       line-height: 1;
       margin-bottom: 32px;
     }
@@ -56,8 +77,10 @@
       font-style: normal;
     }
     .tagline {
-      font-size: 40px;
-      letter-spacing: -0.01em;
+      font-family: "Newsreader", Georgia, serif;
+      font-style: italic;
+      font-size: 42px;
+      letter-spacing: 0;
       color: var(--muted);
     }
     .tagline b {

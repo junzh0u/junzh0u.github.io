@@ -15,6 +15,25 @@ Source lives in `src/`, builds to `_site/` (gitignored — never commit it).
 `build`/`serve` depend on `install` so `bunx` uses the locked Eleventy — a bare
 `bunx @11ty/eleventy` would otherwise float to the latest published version.
 
+## Design
+
+The visual theme ("editorial craft": warm paper/ink, serif type) lives entirely
+in `src/assets/css/style.css`:
+
+- **Fonts** are self-hosted latin-subset variable woff2 files in
+  `src/assets/fonts/` (Fraunces for display, Newsreader for body), preloaded
+  from `base.njk`. No runtime Google Fonts dependency.
+- **Light/dark** is one `light-dark()` palette under `color-scheme: light dark`
+  — there is no dark `@media` block. To force a scheme (e.g. for screenshots),
+  rewrite that `color-scheme` declaration to `dark` or `light`.
+- **Motion** (staggered load reveal via `sibling-index()`, cross-page view
+  transitions) is CSS-only and gated behind `prefers-reduced-motion`.
+- The inner-page nav is the default `nav` block in `base.njk`; the active link
+  is marked with `aria-current="page"` (résumé overrides the block with its
+  own print-button nav).
+- The OG card (`src/assets/og/card.html`) mirrors these tokens by hand — it
+  loads fonts via *relative* paths because `just og` renders it over `file://`.
+
 ## Templates
 
 All shared chrome lives in `src/_includes/base.njk` (the `<head>`, default nav,
