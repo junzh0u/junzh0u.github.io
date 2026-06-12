@@ -32,6 +32,7 @@
   --muted: light-dark(#8a7f73, #998e81);
   --link: light-dark(#b34a23, #e98b5f);
   --link-hover: light-dark(#8f3a1b, #f2a37e);
+  /* keep in sync with the inline critical style in _includes/base.njk */
   --bg: light-dark(#faf6ef, #211c17);
   --accent: light-dark(#c14f26, #e98b5f);
   --info: light-dark(#3a6ea5, #89b4e8);

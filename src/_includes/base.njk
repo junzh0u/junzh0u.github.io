@@ -8,6 +8,16 @@
       dark for dark-mode users instead of flashing the default white while
       CSS is still loading #}
   <meta name="color-scheme" content="light dark">
+  {#- the meta alone still races the external stylesheet in Chrome and can
+      flash white between pages; this inline style paints the canvas in the
+      final colors synchronously at parse time. Keep in sync with --bg in
+      assets/css/style.css. #}
+  <style>
+    html { background-color: #faf6ef; }
+    @media (prefers-color-scheme: dark) {
+      html { background-color: #211c17; }
+    }
+  </style>
 
   <title>{{ title | safe }}</title>
   <meta name="description" content="{{ description | safe }}">
