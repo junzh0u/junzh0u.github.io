@@ -9,13 +9,13 @@ description: Why iTerm2 kept me for years, and how Ghostty's AppleScript support
 
 ## iTerm2
 
-I've used iTerm2 for as long as I can remember — probably since the first day I owned a Mac. It has a lot of features I love: triggers, smart selection, and a look far nicer than Terminal.app's at the time.
+I've used iTerm2 for as long as I can remember — probably since the first day I owned a Mac. It won me over with triggers, smart selection, and a look far nicer than Terminal.app's at the time.
 
-But over the years it's grown bulky, and I've tried plenty of alternatives — Kitty, Alacritty, Warp, you name it. Each is better than iTerm2 in some way, but none made me switch, because I have one very specific need that only iTerm2 met. Let me explain.
+But over the years it's grown bulky, and I've tried plenty of alternatives — Kitty, Alacritty, Warp, you name it. Each is better than iTerm2 in some way, but none of them made me switch, because of one very specific need that, until recently, only iTerm2 could meet. Let me explain.
 
 ## Always in tmux
 
-First, I like to always work inside tmux. I even have this in my `.zshrc`:
+I like to always work inside tmux. I even have this in my `.zshrc`:
 
 ```shell
 if [[ -z "$TMUX" ]]; then
@@ -29,7 +29,7 @@ so that every new terminal drops me straight into tmux.
 
 Beyond the obvious continuity — I never lose a session by accidentally closing the terminal — the one tmux feature I lean on most is `capture-pane`.
 
-So often I want to capture the output of a command **after** I've already run it. Eventually I landed on this:
+So often I want to capture the output of a command **after** I've already run it — without re-running it just to redirect the output, and without dragging a mouse selection across pages of scrollback. Eventually I landed on this:
 
 ```shell
 tmux capture-pane -pS - | pick-cmd
@@ -51,7 +51,7 @@ For all the emulators I'd tried, none could cover my iTerm2-profiles workflow �
 
 Plenty about Ghostty won me over before I even got to the niche feature I needed: it's fast, it's genuinely pretty out of the box, it has a built-in quick (drop-down) terminal, and it's configured through a plain text file I can keep in version control instead of clicking through a preferences pane. That last point alone is a breath of fresh air after years of iTerm2's settings UI.
 
-Ghostty doesn't have iTerm2-style profiles in the way I used them. But it solves the problem from the other direction: it offers the capture functionality I need through [AppleScript](https://ghostty.org/docs/features/applescript):
+Ghostty doesn't have iTerm2-style profiles in the way I used them. Instead, it solves the problem from the other direction: if I don't need tmux locally, the nesting never happens — and profiles have nothing left to fix. And the biggest thing keeping tmux in my local sessions, `capture-pane`, is exactly what Ghostty offers through [AppleScript](https://ghostty.org/docs/features/applescript):
 
 ```applescript
 tell application "Ghostty"
@@ -63,12 +63,12 @@ end tell
 > [!warning] Gotcha
 > Despite its name, `write_screen_file` is the one that captures the full terminal contents I want — visible screen plus scrollback. `write_scrollback_file` sounds like the tmux equivalent, but [it leaves out the visible screen](https://github.com/ghostty-org/ghostty/issues/3496).
 
-That, together with [Ghostty's shell integration](https://ghostty.org/docs/features/shell-integration), means I finally don't *have to* live inside tmux for local sessions — it warns me before I close a pane with a command still running, and on a local machine there's no flaky connection to drop in the first place.
+That replaces `capture-pane`. The other thing tmux gave me, continuity, hardly matters on a local machine: there's no flaky connection to drop, and [Ghostty's shell integration](https://ghostty.org/docs/features/shell-integration) warns me before I close a window with a command still running. For the first time, I don't *have to* live inside tmux locally.
 
-And that's what dissolves the whole problem. The only reason I ever needed profiles was that I lived in tmux locally, so ssh-ing out stacked yet another tmux on top. Take tmux out of my local sessions and that nesting never happens — no profiles required. I still use tmux when I ssh out, which is why I wrote [this wrapper](https://gist.github.com/junzh0u/611bc9f9b728ba0bac3cdeb4b6aecfa3).
+With local tmux gone, `ssh remote-host` from a plain Ghostty window lands me in exactly one tmux — the remote one. No nesting, no profiles required. The only wrinkle: my capture trick now has to work in two worlds, Ghostty locally and tmux over ssh. So I wrapped both in [a small script](https://gist.github.com/junzh0u/611bc9f9b728ba0bac3cdeb4b6aecfa3) that detects which one it's running in and uses the matching capture method.
 
 ## Final picture
 
-So here's where I've landed: Ghostty for everything local, no tmux unless I ssh out. The one feature I couldn't give up — capturing a command's output after I've already run it — came with me; it just runs through AppleScript now instead of tmux.
+So here's where I've landed: Ghostty for everything local, tmux only when I ssh out. The one feature I couldn't give up — capturing a command's output after I've already run it — came with me; it just runs through AppleScript now instead of tmux.
 
 After all these years, I didn't expect an AppleScript hook to be the thing that finally moved me off iTerm2. But that was the missing piece — and once it clicked, the switch was easy.
