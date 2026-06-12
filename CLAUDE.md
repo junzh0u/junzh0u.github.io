@@ -9,7 +9,10 @@ Source lives in `src/`, builds to `_site/` (gitignored — never commit it).
 
 - `just install` — install pinned dependencies from `bun.lock`
 - `just build` — build into `_site/` (runs `install` first)
-- `just serve` — Eleventy dev server with live reload (http://localhost:8080; runs `install` first)
+- `just serve` — Eleventy dev server with live reload (http://localhost:8080; runs `install` first).
+  Don't judge paint behavior here: it serves uncached and transforms HTML per request, so
+  navigations can flash white past Chrome's paint-holding window — use a static serve of
+  `_site/` (`python3 -m http.server -d _site`) to verify anything paint-related.
 - `just og` — regenerate the Open Graph image (`src/og-image.png`) from `src/assets/og/card.html`
 - `just resume-pdf` — build, then export `_site/resume.pdf` with headless Chrome; CI
   (`deploy.yml`) runs the same export so the live site serves `/resume.pdf` (keep the
