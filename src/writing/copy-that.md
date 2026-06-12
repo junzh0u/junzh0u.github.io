@@ -18,6 +18,18 @@ alias copy-that="capture-pane | pick-cmd | pbcopy"
 
 Type `copy-that`, get an fzf list of every command still in scrollback (newest at the top), pick one or a few, and each block — the command, its output, and how long it took — lands on my clipboard. It's how I grab the output of something I ran ten commands ago without re-running it or dragging a mouse selection across pages of scrollback. (What I actually type is `ph` — short for paste-history, a name that stopped making sense two renames ago. Alias it to whatever two letters your fingers like.)
 
+Here it is in action:
+
+<link rel="stylesheet" href="/assets/vendor/asciinema-player/asciinema-player.css">
+<div id="copy-that-cast"></div>
+<script src="/assets/vendor/asciinema-player/asciinema-player.min.js"></script>
+<script>
+  AsciinemaPlayer.create('/assets/casts/copy-that.cast', document.getElementById('copy-that-cast'), {
+    poster: 'npt:0:01',
+    idleTimeLimit: 2,
+  });
+</script>
+
 The pipeline reads like it could only work in one place: `capture-pane` is a tmux command, `pbcopy` is a macOS binary. But I run this everywhere — local Ghostty with no tmux, remote tmux over SSH, and the combinations in between. The trick is that two of those three names aren't what they seem: `capture-pane` is a wrapper that hides *which terminal* I'm in, and `pbcopy` sometimes isn't `pbcopy` at all, which hides *which machine* I'm on. Only `pick-cmd` in the middle is exactly what it looks like — and it's doing the strangest job of the three.
 
 Stage by stage.
