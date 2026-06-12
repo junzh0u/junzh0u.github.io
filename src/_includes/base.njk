@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {#- before the stylesheet: lets the browser paint the first frame's canvas
+      dark for dark-mode users instead of flashing the default white while
+      CSS is still loading #}
+  <meta name="color-scheme" content="light dark">
 
   <title>{{ title | safe }}</title>
   <meta name="description" content="{{ description | safe }}">
