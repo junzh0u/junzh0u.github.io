@@ -32,6 +32,22 @@ jobs:
       - name: Build site
         run: bunx @11ty/eleventy
 
+      # Ships as /resume.pdf — a link-preserving export (the macOS print
+      # dialog's "Save as PDF" drops hyperlinks; this pipeline keeps them).
+      # Mirrors `just resume-pdf`; keep the Chrome flags in sync. Served over
+      # localhost because root-relative asset paths break under file://.
+      - name: Generate résumé PDF
+        run: |
+          python3 -m http.server 8123 --directory _site &
+          server=$!
+          sleep 1
+          timeout 60 google-chrome --headless=new --disable-gpu \
+            --no-first-run --disable-background-networking --disable-component-update \
+            --no-pdf-header-footer --print-to-pdf=_site/resume.pdf \
+            http://localhost:8123/resume/ || true
+          kill "$server"
+          test -s _site/resume.pdf
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3

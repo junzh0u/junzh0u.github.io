@@ -11,6 +11,9 @@ Source lives in `src/`, builds to `_site/` (gitignored — never commit it).
 - `just build` — build into `_site/` (runs `install` first)
 - `just serve` — Eleventy dev server with live reload (http://localhost:8080; runs `install` first)
 - `just og` — regenerate the Open Graph image (`src/og-image.png`) from `src/assets/og/card.html`
+- `just resume-pdf` — build, then export `_site/resume.pdf` with headless Chrome; CI
+  (`deploy.yml`) runs the same export so the live site serves `/resume.pdf` (keep the
+  Chrome flags in the two in sync)
 
 `build`/`serve` depend on `install` so `bunx` uses the locked Eleventy — a bare
 `bunx @11ty/eleventy` would otherwise float to the latest published version.
@@ -33,6 +36,13 @@ in `src/assets/css/style.css`:
   own print-button nav).
 - The OG card (`src/assets/og/card.html`) mirrors these tokens by hand — it
   loads fonts via *relative* paths because `just og` renders it over `file://`.
+- **Print/PDF**: the load-reveal animation must stay scoped to `@media screen`
+  — its `backwards` fill freezes at opacity 0 in print and yields a blank PDF.
+  Print links get a dotted underline via `!important` (per-component screen
+  rules like `.contact a { text-decoration: none }` outrank a bare `a`
+  selector even inside `@media print`). Chrome's own Save-as-PDF keeps links
+  clickable; the macOS print dialog's PDF dropdown strips them — hence the
+  CI-generated `/resume.pdf`.
 
 ## Templates
 

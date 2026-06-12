@@ -38,6 +38,9 @@
   <nav class="page-nav">
     <a class="nav-home" href="/" aria-label="junz.info — home">junz<span>hou</span>.info</a>
     <ul class="nav-links">
+      {#- actions come first so the site links keep the same position on every page #}
+      {%- block navActions %}{% endblock %}
+      <li><a href="/resume/"{% if page.url == '/resume/' %} aria-current="page"{% endif %}>R&eacute;sum&eacute;</a></li>
       <li><a href="/built/"{% if page.url == '/built/' %} aria-current="page"{% endif %}>Built</a></li>
       <li><a href="/writing/"{% if '/writing/' in page.url %} aria-current="page"{% endif %}>Writing</a></li>
       <li><a href="/uses/"{% if page.url == '/uses/' %} aria-current="page"{% endif %}>Uses</a></li>
@@ -51,7 +54,7 @@
   </main>
 
 {% block footer %}{% include "footer.njk" %}{% endblock %}
-
+{% block scripts %}{% endblock %}
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "99f6cfc20c8c480c9b8f31151dbea1fc"}'></script>
 <!-- End Cloudflare Web Analytics -->

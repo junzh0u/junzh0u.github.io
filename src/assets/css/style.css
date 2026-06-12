@@ -100,8 +100,10 @@ body {
 h1, h2, h3 { text-wrap: balance; }
 p, li { text-wrap: pretty; }
 
-/* page-load reveal + cross-page fade; both sit out under reduced motion */
-@media (prefers-reduced-motion: no-preference) {
+/* page-load reveal + cross-page fade; both sit out under reduced motion.
+   Screen-only: in print the animation would freeze at its first frame
+   (opacity 0, `backwards` fill) and produce a blank PDF. */
+@media screen and (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;
   }
@@ -239,7 +241,6 @@ footer {
 
 /* --- Site nav (inner pages) --- */
 
-.resume-nav,
 .page-nav {
   width: 100%;
   max-width: var(--content-width);
@@ -252,13 +253,11 @@ footer {
   flex-wrap: wrap;
 }
 
-.resume-nav a,
 .page-nav a {
   color: var(--muted);
   text-decoration: none;
 }
 
-.resume-nav a:hover,
 .page-nav a:hover {
   color: var(--text);
 }
@@ -295,6 +294,26 @@ footer {
 
 .nav-links a[aria-current="page"] {
   color: var(--accent);
+}
+
+/* page actions (PDF, Print) read as tools, not places: they lead the row so
+   the site links keep the same position on every page, a hairline sets them
+   off, and each carries a small icon */
+.nav-links .nav-action + li:not(.nav-action) {
+  border-left: 1px solid var(--rule);
+  padding-left: 1.4rem;
+}
+
+.nav-links .nav-action a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-links .nav-action svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
 }
 
 .print-button {
@@ -876,7 +895,7 @@ footer {
     margin: 0;
   }
 
-  .resume-nav,
+  .page-nav,
   footer,
   .no-print {
     display: none !important;
@@ -932,9 +951,15 @@ footer {
     break-inside: avoid;
   }
 
+  /* PDF exports keep links clickable; a thin dotted underline shows which
+     text is live. !important because per-component screen rules like
+     `.contact a { text-decoration: none }` outrank a bare `a` selector
+     even inside @media print. */
   a {
     color: inherit;
-    text-decoration: none;
+    text-decoration: underline dotted var(--muted) !important;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
   }
 
   @page {
