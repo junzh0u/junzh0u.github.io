@@ -118,7 +118,8 @@ The blocks go into fzf with `--tac` (newest first), `+s` (keep scrollback order 
 
 Keying a parser off a bespoke prompt sounds fragile, and it would be — except the prompt and the parser are installed together on every machine I touch: the starship config lives in my dotfiles, and these scripts are pinned to those same dotfiles as a [copy-that](https://github.com/junzh0u/copy-that) submodule, so they can't drift apart. (Yours doesn't have to match mine, either — the markers are a pair of env vars.) Beyond that, `pick-cmd` needs nothing but stdlib Python and fzf: it never looks at the terminal or the host, only at the text.
 
-Don't feel like writing prompt regexes? The repo also ships [`copy-that-init`](https://github.com/junzh0u/copy-that/blob/main/copy-that-init), which captures a sample of your scrollback, asks whatever LLM CLI you already have (`claude -p`, `llm`, a local ollama) to propose the two markers, and validates the proposal by running the real parser on your sample before printing the `export` lines. It shows you the exact payload and asks before sending anything — scrollback is where secrets get printed.
+> [!tip] Don't feel like writing prompt regexes?
+> The repo also ships [`copy-that-init`](https://github.com/junzh0u/copy-that/blob/main/copy-that-init), which captures a sample of your scrollback, asks whatever LLM CLI you already have (`claude -p`, `llm`, a local ollama) to propose the two markers, and validates the proposal by running the real parser on your sample before printing the `export` lines. It shows you the exact payload and asks before sending anything — scrollback is where secrets get printed.
 
 ## Stage 3: a clipboard that might be three hops away
 
