@@ -25,6 +25,17 @@
   font-display: swap;
 }
 
+/* print-only (referenced solely by the print --font-ui, so browsers never
+   fetch it on screen): pins the sans for labels/dates/contact so dialog
+   prints match the CI-generated /resume.pdf on every platform */
+@font-face {
+  font-family: "Public Sans";
+  src: url("/assets/fonts/PublicSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light dark;
 
@@ -459,8 +470,9 @@ footer {
   top: 0;
   left: 0;
   width: 0.875rem;
-  height: 1px;
-  background: var(--accent);
+  /* a border, not a background: print dialogs drop backgrounds unless
+     "Background graphics" is checked, which silently erased the tick */
+  border-top: 1px solid var(--accent);
 }
 
 .section-body {
@@ -880,6 +892,8 @@ footer {
     --link: #111;
     --link-hover: #111;
     --bg: #fff;
+    /* pinned face so local dialog prints and the CI PDF set identical type */
+    --font-ui: "Public Sans", Helvetica, Arial, sans-serif;
   }
 
   .resume-page {
