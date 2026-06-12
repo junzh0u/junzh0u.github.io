@@ -2,7 +2,6 @@
 title: git-smartlog — Sapling's best view, for plain Git
 date: 2026-06-12
 description: git log and git branch lose track of your in-flight stack. Sapling's smartlog doesn't — so I rebuilt it for plain Git as a single self-contained zsh script.
-draft: true
 ---
 
 > [!tldr]
