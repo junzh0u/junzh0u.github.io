@@ -829,9 +829,10 @@ footer {
 }
 
 /* TL;DR box — force the label to "TL;DR" (the plugin would title-case the
-   type to "Tldr"); hide that fallback text and render the acronym instead */
+   type to "Tldr"); hide that fallback text and render the acronym instead.
+   Info blue, not the accent: warnings own the warm alarm hue */
 .post .callout-tldr {
-  --callout-accent: var(--accent);
+  --callout-accent: var(--info);
 }
 
 .post .callout-tldr .callout-title {
