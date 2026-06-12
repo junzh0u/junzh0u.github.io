@@ -70,6 +70,13 @@ html, body {
   padding: 0;
 }
 
+html {
+  /* reserve the scrollbar gutter even on pages too short to scroll, so
+     centered content doesn't shift between pages when a classic (non-overlay)
+     scrollbar appears; with overlay scrollbars this reserves nothing */
+  scrollbar-gutter: stable;
+}
+
 body {
   /* faint warm glow bleeding down from the top edge, over the paper tone */
   background:
