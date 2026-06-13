@@ -2,7 +2,6 @@
 title: Parallelism in zsh in two small primitives
 date: 2026-06-13
 description: Shell scripts don't have to run one thing at a time. A bounded job pool and a coprocess-backed mutex — about ninety lines between them — make zsh scripts parallel and safe.
-draft: true
 ---
 
 > [!tldr]

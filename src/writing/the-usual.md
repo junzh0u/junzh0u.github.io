@@ -2,7 +2,6 @@
 title: the-usual — the zsh I source at the top of every script
 date: 2026-06-13
 description: A small zsh toolkit — flags, logging, dry-run, parallelism, and locking — factored out of my dotfiles so each script can be a few lines of real work.
-draft: true
 ---
 
 > [!tldr]

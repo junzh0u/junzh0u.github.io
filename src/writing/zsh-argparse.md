@@ -2,7 +2,6 @@
 title: I built an argument parser for my shell scripts
 date: 2026-06-13
 description: Most shell scripts give up on real flag handling. A stack of small composable zsh files gives every script of mine -h, -n, -q/-v, and -y for free.
-draft: true
 ---
 
 > [!tldr]
