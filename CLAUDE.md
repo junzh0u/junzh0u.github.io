@@ -56,6 +56,15 @@ All shared chrome lives in `src/_includes/base.njk` (the `<head>`, default nav,
 `<main>` wrapper) and `src/_includes/footer.njk` (the social footer). Edit those
 once and every page inherits the change — do **not** copy chrome into pages.
 
+The stylesheet is cache-busted: `base.njk` loads it as `{{ '/assets/css/style.css' | bust }}`.
+The `bust` filter (in `.eleventy.js`) maps a site-absolute asset URL back to its
+`src/` file, hashes the content, and appends `?v=<hash>` — so a CSS edit lands
+immediately past GitHub Pages' `max-age=600`, while unchanged CSS stays cached.
+It's reusable on any passthrough asset (`{{ '/assets/…' | bust }}`), but **don't**
+bust the font preloads: their URLs must stay byte-identical to the `url()` refs
+inside `style.css` (which aren't busted), or the preloaded font goes unused. Fonts
+and the OG image are left unbusted on purpose — effectively immutable.
+
 Two ways pages use the layout:
 
 - **Regular pages** (`uses.njk`, `built.njk`, `now.njk`) — front matter with

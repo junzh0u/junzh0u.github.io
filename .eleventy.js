@@ -1,4 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const fs = require("node:fs");
+const path = require("node:path");
+const crypto = require("node:crypto");
 
 // markdown-it-callouts is ESM-only, so the config function is async and pulls
 // it in via dynamic import().
@@ -48,6 +51,34 @@ module.exports = async function (eleventyConfig) {
     })
   );
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
+
+  // Cache busting: map a site-absolute asset URL (e.g. /assets/css/style.css)
+  // back to its source file and append `?v=<content-hash>`. A changed asset
+  // gets a fresh URL the instant it deploys, so GitHub Pages' max-age=600 on
+  // the bare path no longer serves stale CSS. Assets are passthrough-copied
+  // byte-for-byte, so hashing the src file matches what ships. Don't apply to
+  // the font preloads — their URLs must stay identical to the url() refs inside
+  // style.css (which aren't busted), or the preloaded font goes unused.
+  const bustCache = new Map();
+  eleventyConfig.on("eleventy.before", () => bustCache.clear());
+  eleventyConfig.addFilter("bust", (url) => {
+    const cleanUrl = url.split("?")[0];
+    if (bustCache.has(cleanUrl)) return bustCache.get(cleanUrl);
+    const srcPath = path.join(__dirname, "src", cleanUrl.replace(/^\//, ""));
+    let busted = url;
+    try {
+      const hash = crypto
+        .createHash("sha256")
+        .update(fs.readFileSync(srcPath))
+        .digest("hex")
+        .slice(0, 8);
+      busted = `${cleanUrl}?v=${hash}`;
+    } catch {
+      // Missing/unreadable source — leave the URL untouched, never break the build.
+    }
+    bustCache.set(cleanUrl, busted);
+    return busted;
+  });
 
   // Draft posts: `draft: true` keeps a file out of production builds (and the
   // live site) while still rendering in serve/watch for local preview.

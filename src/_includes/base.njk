@@ -49,7 +49,7 @@
   <link rel="preload" href="/assets/fonts/Fraunces.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/PublicSans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | bust }}">
   {%- block head %}{% endblock %}
 </head>
 <body class="{{ bodyClass }}">
