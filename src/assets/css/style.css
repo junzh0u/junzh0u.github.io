@@ -141,6 +141,11 @@ p, li { text-wrap: pretty; }
        delay is dropped and everything rises together */
     animation-delay: calc(sibling-index() * var(--rise-step));
   }
+
+  .site-title span,
+  .nav-home span {
+    transition: font-size 240ms ease, opacity 240ms ease;
+  }
 }
 
 main {
@@ -156,20 +161,27 @@ main {
   font-weight: 600;
   margin: 0 0 0.5rem;
   letter-spacing: -0.01em;
-}
-
-.site-title a {
   color: var(--text);
-  text-decoration: none;
+  /* hug the text so the hover area (which reveals "hou") doesn't extend into
+     the empty line width to the right */
+  width: fit-content;
 }
 
-.site-title span {
-  color: var(--muted);
-  transition: color 150ms ease;
-}
-
-.site-title a:hover span {
+/* Wordmark easter egg: "hou" is collapsed at rest (so the mark reads as the real
+   domain, junz.info) and expands in on hover/focus — junz.info → junzhou.info.
+   The expand transition is gated behind prefers-reduced-motion below. */
+.site-title span,
+.nav-home span {
+  font-size: 0;
+  opacity: 0;
   color: var(--accent);
+}
+
+.site-title:hover span,
+.page-nav a.nav-home:hover span,
+.page-nav a.nav-home:focus-visible span {
+  font-size: 1em;
+  opacity: 1;
 }
 
 .tagline {
@@ -291,15 +303,6 @@ footer {
 
 .page-nav a.nav-home {
   color: var(--text);
-}
-
-.nav-home span {
-  color: var(--muted);
-  transition: color 150ms ease;
-}
-
-.page-nav a.nav-home:hover span {
-  color: var(--accent);
 }
 
 .nav-links {
