@@ -89,6 +89,10 @@ hyphenated — they become URL slugs.
 Post bodies are **not** run through a template engine, so literal `{{ }}` / `{% %}`
 (e.g. in code samples) render as-is; raw HTML works too.
 
+Post images live in `src/assets/imgs/<slug>/` as WebP (passthrough-copied to
+`/assets/`); embed them with a raw `<figure>`/`<figcaption>` block — `.post img`
+and `.post figure` in `style.css` handle responsive sizing and the caption.
+
 Mark a work-in-progress with `draft: true`: it renders in `just serve` for preview
 but is excluded from production builds (`just build` and CI), so it never reaches
 the live site until you remove the flag.

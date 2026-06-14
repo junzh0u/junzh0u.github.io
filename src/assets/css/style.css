@@ -862,6 +862,19 @@ footer {
   border-radius: 10px;
 }
 
+.post figure {
+  margin: 1.75rem auto;
+  max-width: 38rem;
+}
+
+.post figcaption {
+  margin-top: 0.6rem;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
 @media (max-width: 640px) {
   .page-grid {
     grid-template-columns: 1fr;

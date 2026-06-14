@@ -1,6 +1,7 @@
 ---
 title: git-smartlog — Sapling's best view, for plain Git
 date: 2026-06-12
+updated: 2026-06-14
 description: git log and git branch lose track of your in-flight stack. Sapling's smartlog doesn't — so I rebuilt it for plain Git as a single self-contained zsh script.
 ---
 
@@ -37,24 +38,17 @@ o  7582005a1c  Yesterday at 16:45  junz  origin/master
 
 `@` is `HEAD`. The indented `o` nodes above the bend are my unpushed commits, newest first. Below the bend is the public base — the nearest pushed commit — and `~` is everything older, which I don't care about right now. One glance and I have the whole stack, where it forks off `master`, and how old each piece is.
 
-There's also a `-u` flag that draws uncommitted changes as one more node on top, with per-file diff bars. Sapling has no equivalent — the idea is borrowed from [Jujutsu](https://github.com/jj-vcs/jj), which treats the working copy as a commit in its own right. I keep it baked into my alias (`alias sl='git-smartlog -u'`), so a dirty working tree shows up as just another thing on the stack:
+There's also a `-u` flag that draws uncommitted changes as one more node on top of `HEAD` — `git diff --stat`, dressed up. Every file gets a one-letter marker for what happened to it (added, modified, deleted, renamed, untracked, and a few more), the rows are grouped and colored by that marker, and untracked files are folded in as if staged — against a throwaway index, so the real one is never touched. Sapling has no such node; the idea is borrowed from [Jujutsu](https://github.com/jj-vcs/jj), which treats the working copy as a commit in its own right.
 
-```text
-$ git smartlog -u
-  @  Uncommitted changes  2 files, +26 -4
-  │ http_client.go | 18 ++++++++++++++----
-  │ retry.go       | 12 ++++++++++++
-  │
-  o  23de132889  14 minutes ago  junz
-  │  Wire backoff into the HTTP client
-  │
-  o  a8d1958eb9  Today at 10:30  junz
-╭─╯  Add exponential backoff with jitter
-│
-o  7582005a1c  Yesterday at 16:45  junz  origin/master
-│  Bump dependencies
-~
-```
+<figure>
+  <img src="/assets/imgs/git-smartlog/cover.webp" alt="git smartlog -u output: an 'Uncommitted changes' node listing files grouped and color-coded by change kind — added, untracked, modified, deleted, renamed, and more — drawn on top of a stack of draft commits over origin/master" width="1188" height="1470">
+  <figcaption><code>git smartlog -u</code> — uncommitted work as one more node on top of the stack, grouped and colored by change kind.</figcaption>
+</figure>
+
+> [!tip] How I run it
+> I keep `-u` on by default — `alias sl='git-smartlog -u'` — so a dirty working tree always shows up as just another node on the stack.
+
+That block earns its keep on its own, too: the same script, run as [`git smartstat`](https://github.com/junzh0u/git-smartlog#git-smartstat), prints just it as a standalone command — one file answering to two names.
 
 ## The hard part: finding the base
 
