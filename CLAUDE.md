@@ -82,8 +82,9 @@ wherever it belongs. For anything that needs a different head/nav/footer, use th
 
 Posts live in `src/writing/` — an Obsidian vault (open *that folder* in Obsidian).
 Each `.md` becomes `/writing/<slug>/` and is listed on the `/writing/` index; front
-matter is `title`, `date`, `description`. Keep filenames hyphenated — they become
-URL slugs.
+matter is `title`, `date`, `description`, and an optional `updated` (a date shown
+next to `date` on the post, but only when it differs from it). Keep filenames
+hyphenated — they become URL slugs.
 
 Post bodies are **not** run through a template engine, so literal `{{ }}` / `{% %}`
 (e.g. in code samples) render as-is; raw HTML works too.

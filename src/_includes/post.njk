@@ -5,7 +5,7 @@ ogType: article
 ---
 <div class="name-block">
   <h1 class="name">{{ title }}</h1>
-  <p class="post-date"><time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time></p>
+  <p class="post-date"><time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time>{% if updated %}{% if (updated | isoDate) != (page.date | isoDate) %} &middot; updated <time datetime="{{ updated | isoDate }}">{{ updated | postDate }}</time>{% endif %}{% endif %}</p>
 </div>
 
 <p class="section-label"><a href="/writing/">&larr; Writing</a></p>
