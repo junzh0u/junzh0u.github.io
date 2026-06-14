@@ -1,6 +1,7 @@
 ---
 title: I built an argument parser for my shell scripts
 date: 2026-06-13
+updated: 2026-06-14
 description: Most shell scripts give up on real flag handling. A stack of small composable zsh files gives every script of mine -h, -n, -q/-v, and -y for free.
 ---
 
@@ -31,9 +32,8 @@ source $ZDOTDIR/the-usual/argparse/_h.zsh     # adds -h (help), must be last
 
 Each file runs its own `zparseopts` call that pulls out the flags it owns and removes them from the argument list (`-D -E`). By the time `_h.zsh` runs last, the only thing left in `$@` is the script's real positional arguments. A script that never prompts just doesn't source `y.zsh`; one that never mutates anything skips `n.zsh`. You compose exactly the surface you want.
 
-## Why `_init.zsh` exists
-
-There's one wrinkle the very first file exists to solve. `zparseopts` will happily expand a bundled `-abc` into `-a -b -c` — but only when `a`, `b`, and `c` are declared in the *same* `zparseopts` call. Splitting each flag into its own file means separate calls, so `-qn` would never be understood: `qv.zsh` only knows about `q`, `n.zsh` only about `n`.
+> [!warning] Why `_init.zsh` exists
+> `zparseopts` will happily expand a bundled `-abc` into `-a -b -c` — but only when `a`, `b`, and `c` are declared in the *same* `zparseopts` call. Splitting each flag into its own file means separate calls, so `-qn` would never be understood: `qv.zsh` only knows about `q`, `n.zsh` only about `n`.
 
 So [`_init.zsh`](https://github.com/junzh0u/the-usual/blob/main/argparse/_init.zsh) runs first and pre-expands bundled short flags by hand:
 
@@ -114,7 +114,10 @@ else
 fi
 ```
 
-`(( MODE_DRY_RUN ))` reads false when the flag is absent — an unset variable is arithmetic zero — and true once `n.zsh` has set it, so the guard needs no default. For a script that should bail before touching anything, the short form is `(( MODE_DRY_RUN )) && exit 0` once it's logged its plan.
+`(( MODE_DRY_RUN ))` reads false when the flag is absent — an unset variable is arithmetic zero — and true once `n.zsh` has set it, so the guard needs no default.
+
+> [!tip] Bail out early in a dry run
+> For a script that should bail before touching anything, the short form is `(( MODE_DRY_RUN )) && exit 0` once it's logged its plan.
 
 The logging is the other half. Because every `log_*` line carries a `[DRY_RUN]` prefix whenever the flag is set — that tag from the section above — the same `log_info "Removing $f"` reads `[DRY_RUN] [my-script] Removing $f` in a dry run and `[my-script] Removing $f` for real. A `-n` run becomes a labeled transcript of exactly what a real run would do, line for line, which is the whole reason to have the flag.
 
