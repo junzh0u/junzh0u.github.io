@@ -271,6 +271,15 @@ footer {
   display: block;
 }
 
+.colophon {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
 /* --- Site nav (inner pages) --- */
 
 .page-nav {
