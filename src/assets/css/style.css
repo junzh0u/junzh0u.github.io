@@ -816,10 +816,17 @@ footer {
 
 .post .callout-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: calc(var(--body-font-size) * 1.1);
   font-weight: 700;
   line-height: 1.4;
   color: var(--callout-accent);
+}
+
+/* inline code in a title rides at the title's full size, not the smaller
+   body-code ratio — monospace already looks smaller than serif at an equal
+   point size, so anything less reads as a tiny pill beside the bold title */
+.post .callout-title code {
+  font-size: 1em;
 }
 
 /* space the title from real body content, if any */
@@ -853,7 +860,7 @@ footer {
 
 .post .callout-tldr .callout-title::before {
   content: "TL;DR";
-  font-size: 1rem;
+  font-size: calc(var(--body-font-size) * 1.1);
 }
 
 .post img {
