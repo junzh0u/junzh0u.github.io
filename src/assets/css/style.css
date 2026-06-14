@@ -814,19 +814,20 @@ footer {
   display: none;
 }
 
+/* a callout title is just body-sized text (inherited) made bold and accent-colored
+   — no font-size needed; the weight and color are the title cues */
 .post .callout-title {
   margin: 0;
-  font-size: calc(var(--body-font-size) * 1.1);
   font-weight: 700;
   line-height: 1.4;
   color: var(--callout-accent);
 }
 
-/* inline code in a title rides at the title's full size, not the smaller
-   body-code ratio — monospace already looks smaller than serif at an equal
-   point size, so anything less reads as a tiny pill beside the bold title */
+/* inline code in a title sits a touch below the title text (0.9em) but above the
+   body-code ratio (0.8em) — monospace looks smaller than serif at an equal em, so
+   a title's code needs the nudge up to not read as a tiny pill */
 .post .callout-title code {
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 /* space the title from real body content, if any */
@@ -860,7 +861,9 @@ footer {
 
 .post .callout-tldr .callout-title::before {
   content: "TL;DR";
-  font-size: calc(var(--body-font-size) * 1.1);
+  /* explicit size: the parent .callout-title is font-size:0 (hiding "Tldr"),
+     so this can't inherit a usable size or use em — match the body size directly */
+  font-size: var(--body-font-size);
 }
 
 .post img {
