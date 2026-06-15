@@ -91,10 +91,13 @@ wherever it belongs. For anything that needs a different head/nav/footer, use th
 
 Posts live in `src/writing/` — an Obsidian vault (open *that folder* in Obsidian).
 Each `.md` becomes `/writing/<slug>/` and is listed on the `/writing/` index; front
-matter is `title`, `date`, `description`, and an optional `updated` (a date shown
-next to `date` on the post, but only when it differs from it). When you make a
-meaningful edit to an already-published post, set `updated` to the edit date. Keep
-filenames hyphenated — they become URL slugs.
+matter is `title`, `date`, `description`, and an optional `updated` (shown only
+when it differs from `date`: next to `date` on the post, and as a lighter line
+beneath the publish date on the `/writing/` index). When you make a meaningful
+edit to an already-published post, set `updated` to the edit date. Keep filenames
+hyphenated — they become URL slugs. The index (`src/writing.njk`) reuses the
+`.uses-list` style shared with `/uses/`; scope index-only CSS to `.writing-page`
+so it doesn't leak.
 
 Post bodies are **not** run through a template engine, so literal `{{ }}` / `{% %}`
 (e.g. in code samples) render as-is; raw HTML works too.
