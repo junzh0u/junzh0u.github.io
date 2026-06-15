@@ -50,23 +50,18 @@ There's also a `-u` flag that draws uncommitted changes as one more node on top 
 
 That block earns its keep on its own, too: the same script, run as [`git smartstat`](https://github.com/junzh0u/git-smartlog#git-smartstat), prints just it as a standalone command — one file answering to two names.
 
-## The hard part: finding the base
-
-Drawing the graph is the easy half. The part that took real care is deciding what counts as the **public base** — the nearest pushed commit your drafts sit on. Get that wrong and the smartlog lies to you, which is worse than not having one.
-
-> [!warning] Gotcha
-> `@{u}` — the branch's upstream — looks like the obvious base, and it works right up until you push your feature branch. Now the upstream is just a copy of your own branch, the merge-base with `HEAD` is `HEAD` itself, and the whole draft stack collapses to nothing. A local `main` fails the same way the moment you're standing on it.
-
-What actually works: only consider remote-tracking trunks — `origin/HEAD`, `origin/main`, `origin/master`, and their `upstream/` twins — and among those, take the one whose merge-base with `HEAD` is closest to `HEAD`. That's Sapling's "nearest public ancestor" rule, and as a bonus it handles a stale fork remote (an `origin/master` sitting behind `upstream/main`) without a fuss. `@{u}` and the local `main` are still in the script, but only as last-resort fallbacks for when no remote trunk exists at all.
-
 ## One file, on purpose
 
 I had one firm constraint: the script depends on zsh and git, and nothing else — not even the rest of my dotfiles. That way I can `scp` it to any box, including the BusyBox NAS where installing anything is a chore, and it just runs. All the data comes out of a couple of `git log` format strings (`%al` for the author, `%D` for the refs); the rest — the bend, the colors, the layout — [the script](https://github.com/junzh0u/git-smartlog/blob/master/git-smartlog) draws itself.
 
-It also copies Sapling's output habits closely, so the view reads the same. Public commits authored by someone else render metadata-only — no author, no subject — which keeps shared-trunk history compact. Relative times follow Sapling's two-tier scheme: "14 minutes ago" under 90 minutes, then "Today at 10:30", "Yesterday", a weekday, and eventually a plain date. I kept the real `sl` around while building it and diffed the two outputs — rendered text and raw escape codes both — to keep the mirror honest.
+It also copies Sapling's output habits closely, so the view reads the same. Public commits authored by someone else render metadata-only — no author, no subject — which keeps shared-trunk history compact. Relative times follow Sapling's two-tier scheme: "14 minutes ago" under 90 minutes, then "Today at 10:30", "Yesterday", a weekday, and eventually a plain date. Run side by side with the real `sl`, the two match on both the rendered text and the raw escape codes.
 
 ## What it doesn't do
 
 One deliberate limitation: it draws the current branch's stack and nothing else. Sapling shows every draft branch in the repo at once, through a full DAG renderer; this script doesn't try. When you work one branch at a time — which is me, almost always — the output matches `sl` exactly.
 
-If you've ever lost track of which of your commits are pushed, or squinted at `git log --graph` looking for where your branch leaves `master`, this is the gap it fills — and it's a single file, one `curl` away (install and the `sl` alias are in [the README](https://github.com/junzh0u/git-smartlog)). It's not a Sapling reimplementation — it's Sapling's best view, made to run anywhere Git does.
+## The code isn't the point
+
+Full disclosure: this is a vibe-coding project — an LLM wrote essentially all of the zsh, and most of this post. What's mine is the taste, the complaints, and the steady demand that it be funnier.
+
+If you've ever lost track of which of your commits are pushed, or squinted at `git log --graph` looking for where your branch leaves `master`, this is the gap it fills — and it's a single file, one `curl` away (install and the `sl` alias are in [the README](https://github.com/junzh0u/git-smartlog)). It's not a Sapling reimplementation — it's the two views I missed most, Sapling's smartlog and Jujutsu's take on the working copy, made to run anywhere Git does.
