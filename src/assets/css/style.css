@@ -645,6 +645,20 @@ footer {
   color: var(--muted);
 }
 
+/* writing index: float the date out to a right-aligned column instead of an
+   inline em-dash note (several post titles already contain em-dashes) */
+.writing-page .uses-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.writing-page .uses-list .note {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
 .uses-credit {
   grid-column: 2;
   margin: 0;
