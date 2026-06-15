@@ -659,6 +659,17 @@ footer {
   font-variant-numeric: tabular-nums;
 }
 
+.writing-page .uses-list .dates {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.writing-page .uses-list .updated {
+  font-size: 0.82em;
+  opacity: 0.6;
+}
+
 .uses-credit {
   grid-column: 2;
   margin: 0;

@@ -15,7 +15,7 @@ bodyClass: writing-page
 {%- if posts | length %}
   <ul class="uses-list">
   {%- for post in posts %}
-    <li><a href="{{ post.url }}">{{ post.data.title }}</a> <time class="note" datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time></li>
+    <li><a href="{{ post.url }}">{{ post.data.title }}</a> <span class="note dates"><time datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>{% if post.data.updated %}{% if (post.data.updated | isoDate) != (post.date | isoDate) %}<time class="updated" datetime="{{ post.data.updated | isoDate }}">updated {{ post.data.updated | postDate }}</time>{% endif %}{% endif %}</span></li>
   {%- endfor %}
   </ul>
 {%- else %}
