@@ -645,6 +645,24 @@ footer {
   color: var(--muted);
 }
 
+/* two-level sections (uses page): a quieter sub-label inside a section body,
+   subordinate to the left-rail .section-label that names the place */
+.uses-subhead {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin: 1.5rem 0 0;
+}
+
+/* the subhead already separates this list from what's above it, so it doesn't
+   need the full intro-line gap .uses-list carries by default */
+.uses-subhead + .uses-list {
+  margin-top: 0.65rem;
+}
+
 /* writing index: float the date out to a right-aligned column instead of an
    inline em-dash note (several post titles already contain em-dashes) */
 .writing-page .uses-list li {
