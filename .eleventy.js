@@ -94,8 +94,6 @@ module.exports = async function (eleventyConfig) {
       includes: "_includes",
       output: "_site",
     },
-    // Process bare .html files (e.g. the /chat redirect) through Nunjucks too.
-    htmlTemplateEngine: "njk",
     // Don't run Markdown post bodies through a template engine, so posts can
     // contain literal {{ }} / {% %} (e.g. in code samples) without escaping.
     markdownTemplateEngine: false,
