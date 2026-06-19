@@ -22,9 +22,9 @@ locked Eleventy version is used rather than whatever `bunx` would fetch as lates
 ```
 src/
   _includes/       # base.njk (shared <head>/nav/footer) + footer.njk
-  *.njk            # one file per page → / , /uses/ , /built/ , /now/ , /resume/
-  chat/            # bare meta-refresh redirect, passed through untouched
-  assets/          # CSS, icons, images (passthrough-copied)
+  *.njk            # one file per page → / , /uses/ , /built/ , /now/ , /resume/ , /writing/
+  writing/         # Obsidian vault of markdown posts → /writing/<slug>/
+  assets/          # CSS, fonts, icons, images (passthrough-copied)
   CNAME .nojekyll favicon.ico og-image.png   # passthrough-copied to the site root
 .github/workflows/deploy.yml                  # build + deploy on push to master
 ```
