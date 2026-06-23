@@ -60,7 +60,7 @@
       {#- actions come first so the site links keep the same position on every page #}
       {%- block navActions %}{% endblock %}
       <li><a href="/resume/"{% if page.url == '/resume/' %} aria-current="page"{% endif %}>R&eacute;sum&eacute;</a></li>
-      <li><a href="/built/"{% if page.url == '/built/' %} aria-current="page"{% endif %}>Built</a></li>
+      <li><a href="/built/"{% if '/built/' in page.url %} aria-current="page"{% endif %}>Built</a></li>
       <li><a href="/writing/"{% if '/writing/' in page.url %} aria-current="page"{% endif %}>Writing</a></li>
       <li><a href="/uses/"{% if page.url == '/uses/' %} aria-current="page"{% endif %}>Uses</a></li>
       <li><a href="/now/"{% if page.url == '/now/' %} aria-current="page"{% endif %}>Now</a></li>

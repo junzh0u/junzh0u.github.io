@@ -52,6 +52,9 @@ module.exports = async function (eleventyConfig) {
   );
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
 
+  // Just the year from an ISO date string (e.g. the woodworking meta line).
+  eleventyConfig.addFilter("year", (d) => String(d).slice(0, 4));
+
   // Cache busting: map a site-absolute asset URL (e.g. /assets/css/style.css)
   // back to its source file and append `?v=<content-hash>`. A changed asset
   // gets a fresh URL the instant it deploys, so GitHub Pages' max-age=600 on

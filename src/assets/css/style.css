@@ -378,7 +378,8 @@ footer {
 .built-page,
 .uses-page,
 .now-page,
-.writing-page {
+.writing-page,
+.woodworking-page {
   padding-top: 2.5rem;
 }
 
@@ -413,6 +414,22 @@ footer {
   font-weight: 600;
   margin: 0.5rem 0 0;
   font-size: 1.1rem;
+}
+
+/* "← Built" breadcrumb above a nested page's title (woodworking lives under Built) */
+.breadcrumb {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin: 0 0 0.85rem;
+}
+
+.breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
 }
 
 .contact {
@@ -607,36 +624,176 @@ footer {
   border-radius: 4px;
 }
 
-/* --- Built: photo gallery --- */
+/* --- Built: three featured woodworking pieces linking into the gallery --- */
 
-.gallery {
+.wood-teaser {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
-  /* match the uses-list separation from its section's intro line */
   margin: 1.5rem 0 1.25rem;
 }
 
-.gallery figure {
+.wood-teaser figure {
   margin: 0;
 }
 
-.gallery img {
+.wood-teaser a {
   display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
   border-radius: 10px;
   border: 1px solid var(--rule);
+  overflow: hidden;
   /* faint placeholder tint before the image paints */
   background: var(--code-bg);
 }
 
-.gallery figcaption {
+.wood-teaser img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* uniform crop so the three featured pieces sit in one even row */
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 250ms var(--rise-ease);
+}
+
+.wood-teaser a:hover img,
+.wood-teaser a:focus-visible img {
+  transform: scale(1.03);
+}
+
+.wood-teaser figcaption {
   margin-top: 0.45rem;
   font-family: var(--font-ui);
   font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* --- Woodworking gallery --- */
+
+/* Row-based grid (not CSS columns): cards must read left-to-right, top-to-bottom
+   so a related pair — e.g. the lantern and the mailbox built to match it — stays
+   side by side. auto-fill at 15rem gives two columns on desktop, one on phones;
+   `align-items: start` lets a shorter card sit at the top of its row. */
+.wood-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.75rem 1.25rem;
+  align-items: start;
+  /* match the intro-line separation the other body lists use */
+  margin: 1.5rem 0 0;
+}
+
+.wood-gallery figure {
+  margin: 0;
+}
+
+/* the thumbnail is a link to the project's detail page; the frame (border +
+   radius) lives here so overflow can clip the hover zoom of the image inside */
+.wood-thumb {
+  display: block;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  /* faint placeholder tint before the image paints */
+  background: var(--code-bg);
+}
+
+.wood-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* uniform square crop so cards sit in even rows whatever each photo's native
+     orientation — the detail page shows the full, uncropped image */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 250ms var(--rise-ease);
+}
+
+.wood-thumb:hover img,
+.wood-thumb:focus-visible img {
+  transform: scale(1.03);
+}
+
+.wood-gallery figcaption {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+a.wood-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+a.wood-title:hover {
+  color: var(--accent);
+}
+
+.wood-meta {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+/* "N photos →" affordance: a quiet cue that the card opens a detail page */
+.wood-more {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+
+.wood-more span {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+
+.wood-gallery figure:hover .wood-more span {
+  transform: translateX(3px);
+}
+
+/* --- Woodworking detail page: every photo, stacked full width --- */
+
+/* plan/credit line under a detail page's description (e.g. "Plan by …") */
+.wood-credit {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+.wood-detail-photos {
+  margin: 1.5rem 0 0;
+}
+
+.wood-detail-photos figure {
+  margin: 0 0 1.5rem;
+}
+
+.wood-detail-photos figure:last-child {
+  margin-bottom: 0;
+}
+
+.wood-detail-photos img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  background: var(--code-bg);
+}
+
+.wood-detail-photos figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
   color: var(--muted);
 }
 

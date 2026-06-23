@@ -1,0 +1,168 @@
+[
+  {
+    "slug": "entryway-cabinet",
+    "category": "Furniture",
+    "title": "Entryway cabinet",
+    "materials": "Black walnut",
+    "date": "2024-09-10",
+    "hours": 43,
+    "description": "Solid black walnut. The grain runs continuous across the entire front — the top drawer and the doors below it — uninterrupted by pulls or knobs: a single recessed finger-pull worked into the center opens them all. On tapered legs.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/entryway-cabinet-01.webp", "width": 667, "height": 1000, "alt": "Black walnut entryway cabinet with grain running continuous across the drawers and doors, a potted plant on top" }
+    ]
+  },
+  {
+    "slug": "sideboard",
+    "category": "Furniture",
+    "title": "Sideboard",
+    "materials": "Black walnut",
+    "date": "2022-01-15",
+    "description": "A mid-century sideboard with bold striped grain — one hinged cabinet door and two sliding doors, a raised gallery rail, and a lower display shelf.",
+    "credit": { "label": "Adapted from a plan by", "name": "Foureyes Furniture", "url": "https://www.youtube.com/watch?v=aU9XG38WEwg" },
+    "images": [
+      { "src": "/assets/imgs/woodworking/sideboard-02.webp", "width": 1000, "height": 875, "alt": "Mid-century black walnut sideboard with a cabinet door and two sliding doors, a gallery rail, and a lower shelf" },
+      { "src": "/assets/imgs/woodworking/sideboard-01.webp", "width": 1000, "height": 750, "alt": "SketchUp model of the sideboard", "caption": "The SketchUp model it was built from." }
+    ]
+  },
+  {
+    "slug": "bench-from-chairs",
+    "category": "Furniture",
+    "title": "Bench from old chairs",
+    "materials": "Reclaimed chairs",
+    "date": "2021-02-22",
+    "description": "Built for a neighbor, to her own design, from two of her old chairs — their backs joined with shaped arms into a single two-seat bench, then painted white.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/bench-from-chairs-02.webp", "width": 1000, "height": 750, "alt": "White-painted two-seat bench built from a pair of antique chair backs" },
+      { "src": "/assets/imgs/woodworking/bench-from-chairs-01.webp", "width": 750, "height": 1000, "alt": "Paper-and-tape mockup planning the bench from two chairs", "caption": "Her design, mocked up from the two chairs." }
+    ]
+  },
+  {
+    "slug": "scrapwood-chair",
+    "category": "Furniture",
+    "title": "Scrapwood chair",
+    "materials": "Plywood offcuts",
+    "date": "2020-06-27",
+    "hours": 8,
+    "description": "More an experiment in bending plywood than polished furniture — scrap ply coaxed into a contoured back and seat on splayed dowel legs.",
+    "credit": { "label": "Plan by", "name": "Alexandre Chappel", "url": "https://www.youtube.com/watch?v=UC2kYSn1J3s" },
+    "images": [
+      { "src": "/assets/imgs/woodworking/scrapwood-chair-01.webp", "width": 750, "height": 1000, "alt": "Plywood dining chair with a contoured back and seat on splayed dowel legs" }
+    ]
+  },
+  {
+    "slug": "under-stair-storage",
+    "category": "Furniture",
+    "title": "Under-stair storage",
+    "materials": "Black walnut & plywood",
+    "date": "2020-02-15",
+    "description": "A pull-out drawer of angled shoe racks, faced in black walnut with a recessed finger pull, tucked into the dead space under the stairs.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/under-stair-storage-01.webp", "width": 750, "height": 1000, "alt": "Pull-out shoe-rack drawer faced in black walnut, fitted into the space under the stairs" }
+    ]
+  },
+  {
+    "slug": "tv-stand",
+    "category": "Furniture",
+    "title": "TV stand",
+    "materials": "Black walnut",
+    "date": "2019-12-27",
+    "hours": 34,
+    "description": "A low credenza — four drawers with cabinet pulls flanking an open center cubby, on angled mid-century legs.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/tv-stand-03.webp", "width": 667, "height": 1000, "alt": "Low black walnut TV credenza with four drawers and an open center cubby on angled legs" },
+      { "src": "/assets/imgs/woodworking/tv-stand-02.webp", "width": 668, "height": 1000, "alt": "Colored SketchUp render of the TV stand", "caption": "The SketchUp design." }
+    ]
+  },
+  {
+    "slug": "wall-lantern",
+    "category": "Decoration",
+    "title": "Wall lantern",
+    "materials": "Padauk & maple",
+    "date": "2021-02-07",
+    "hours": 30,
+    "description": "A Japanese-style lantern: a padauk frame with a maple lattice and shoji-paper panels, under a peaked, mitered roof — reverse-engineered from a photo of a commercial one and built from scratch over a few weekends.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/wall-lantern-02.webp", "width": 750, "height": 1000, "alt": "Completed padauk lantern with maple lattice and shoji panels on a workbench" },
+      { "src": "/assets/imgs/woodworking/wall-lantern-01.webp", "width": 800, "height": 500, "alt": "Reference photo of the commercial lantern the design was based on", "caption": "The commercial lantern I reverse-engineered the design from." },
+      { "src": "/assets/imgs/woodworking/wall-lantern-skp.webp", "width": 775, "height": 950, "alt": "SketchUp model of the wall lantern", "caption": "The SketchUp model I drew from that photo." },
+      { "src": "/assets/imgs/woodworking/wall-lantern-03.webp", "width": 750, "height": 1000, "alt": "The lantern installed and lit beside a front door at night", "caption": "Installed and lit by the front door." },
+      { "src": "/assets/imgs/woodworking/wall-lantern-04.webp", "width": 1000, "height": 750, "alt": "Milled padauk slats with cut notches on a workbench", "caption": "Milled padauk slats, notched for the frame." },
+      { "src": "/assets/imgs/woodworking/wall-lantern-05.webp", "width": 1000, "height": 750, "alt": "The padauk frame skeleton during glue-up", "caption": "The frame during glue-up." },
+      { "src": "/assets/imgs/woodworking/wall-lantern-07.webp", "width": 1000, "height": 750, "alt": "Four assembled maple lattice panels", "caption": "The four maple lattice panels." },
+      { "src": "/assets/imgs/woodworking/wall-lantern-09.webp", "width": 750, "height": 1000, "alt": "Four pierced padauk pieces for the roof ridge", "caption": "Pierced padauk pieces for the roof ridge." },
+      { "src": "/assets/imgs/woodworking/wall-lantern-12.webp", "width": 750, "height": 1000, "alt": "Shaped wall-mount bracket and base parts", "caption": "The shaped wall bracket and base parts." }
+    ]
+  },
+  {
+    "slug": "mailbox",
+    "category": "Decoration",
+    "title": "Mailbox",
+    "materials": "Padauk & maple",
+    "date": "2021-04-03",
+    "description": "A wall mailbox — a padauk frame and letter slot over a maple-plywood drop-down door, its palette chosen to match the wall lantern by the door.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/mailbox-02.webp", "width": 750, "height": 1000, "alt": "Wall-mounted mailbox with a padauk frame over a maple-plywood drop-down door", "caption": "Mounted by the front door." },
+      { "src": "/assets/imgs/woodworking/mailbox-03.webp", "width": 750, "height": 1000, "alt": "A hand pulling open the mailbox's drop-front compartment", "caption": "The drop-front compartment, open." },
+      { "src": "/assets/imgs/woodworking/mailbox-01.webp", "width": 1000, "height": 750, "alt": "The mailbox and front panel on a workbench before mounting", "caption": "Before mounting." }
+    ]
+  },
+  {
+    "slug": "lego-shadow-box",
+    "category": "Decoration",
+    "title": "LEGO shadow box",
+    "materials": "Black walnut",
+    "date": "2019-10-20",
+    "description": "A black walnut shadow box with a 3×4 grid of bays, built to display a set of LEGO BrickHeadz.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/lego-shadow-box-01.webp", "width": 750, "height": 1000, "alt": "Black walnut grid shadow box displaying LEGO BrickHeadz figures, beside flowers" },
+      { "src": "/assets/imgs/woodworking/lego-shadow-box-03.webp", "width": 1000, "height": 750, "alt": "Two filled black walnut shadow boxes on a mantel", "caption": "A pair of them, filled, on the mantel." },
+      { "src": "/assets/imgs/woodworking/lego-shadow-box-02.webp", "width": 750, "height": 1000, "alt": "Close-up of the shadow box's dovetailed corner joinery", "caption": "Dovetailed corner detail." }
+    ]
+  },
+  {
+    "slug": "coasters",
+    "category": "Small pieces",
+    "title": "Mosaic coasters",
+    "materials": "Mixed hardwood end-grain",
+    "date": "2024-01-01",
+    "description": "Hardwood offcuts glued up into mosaic blocks, then sliced thin into coasters — a whole batch of sets, each paired with a color-matched 3D-printed stand.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/coasters.webp", "width": 750, "height": 1000, "alt": "Several sets of mosaic end-grain wood coasters on color-matched printed stands" },
+      { "src": "/assets/imgs/woodworking/coasters-02.webp", "width": 750, "height": 1000, "alt": "A mosaic coaster set on a black printed stand" },
+      { "src": "/assets/imgs/woodworking/coasters-03.webp", "width": 750, "height": 1000, "alt": "A mosaic coaster set on a terracotta printed stand" },
+      { "src": "/assets/imgs/woodworking/coasters-04.webp", "width": 750, "height": 1000, "alt": "A mosaic coaster set on a green printed stand" },
+      { "src": "/assets/imgs/woodworking/coasters-05.webp", "width": 750, "height": 1000, "alt": "A coaster set with a dark end-grain mosaic on a white stand" },
+      { "src": "/assets/imgs/woodworking/coasters-06.webp", "width": 750, "height": 1000, "alt": "A coaster set with a red and purple mosaic on a white stand" },
+      { "src": "/assets/imgs/woodworking/coasters-07.webp", "width": 1000, "height": 750, "alt": "The full batch of coaster sets on color-matched stands, with a stack of spares", "caption": "The full batch, with a stack of spares." }
+    ]
+  },
+  {
+    "slug": "magsafe-stand",
+    "category": "Small pieces",
+    "title": "MagSafe stand",
+    "materials": "Padauk & maple",
+    "date": "2021-11-09",
+    "description": "A maple face on a padauk wedge base, with a recessed cable channel and magnets set flush to hold the MagSafe puck. Two brass rods through the base double as the joint between the two halves and as ballast to keep it steady.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/magsafe-stand-01.webp", "width": 750, "height": 1000, "alt": "Maple and padauk MagSafe stand, empty", "caption": "The maple face and padauk base." },
+      { "src": "/assets/imgs/woodworking/magsafe-stand-02.webp", "width": 750, "height": 1000, "alt": "The MagSafe stand holding a charger puck", "caption": "Holding the MagSafe puck." },
+      { "src": "/assets/imgs/woodworking/magsafe-stand-04.webp", "width": 750, "height": 1000, "alt": "3D CAD render of the MagSafe stand", "caption": "The CAD model." },
+      { "src": "/assets/imgs/woodworking/magsafe-stand-03.webp", "width": 750, "height": 1000, "alt": "Dimensioned CAD drawing of the charger cutout", "caption": "Dimensioned drawing of the charger cutout." }
+    ]
+  },
+  {
+    "slug": "tissue-boxes",
+    "category": "Small pieces",
+    "title": "Tissue boxes",
+    "materials": "Assorted hardwoods and plywood",
+    "date": "2021-01-18",
+    "hours": 10,
+    "description": "An experiment in different materials and joinery — tissue-box covers in black walnut, shedua, bubinga, and a herringbone-patterned plywood, each trying a different wood and a different joint.",
+    "images": [
+      { "src": "/assets/imgs/woodworking/tissue-boxes-01.webp", "width": 750, "height": 1000, "alt": "Black walnut cube tissue-box cover on a workbench", "caption": "Black walnut." },
+      { "src": "/assets/imgs/woodworking/tissue-boxes-02.webp", "width": 750, "height": 1000, "alt": "Shedua cube tissue-box cover on a workbench", "caption": "Shedua." },
+      { "src": "/assets/imgs/woodworking/tissue-boxes-03.webp", "width": 750, "height": 1000, "alt": "Herringbone-patterned plywood cube tissue-box cover", "caption": "Herringbone-patterned plywood." },
+      { "src": "/assets/imgs/woodworking/tissue-boxes-04.webp", "width": 1000, "height": 750, "alt": "Bubinga and maple rectangular tissue box with box-jointed corners", "caption": "Bubinga and maple, box-jointed." }
+    ]
+  }
+]

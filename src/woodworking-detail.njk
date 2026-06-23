@@ -1,0 +1,30 @@
+---
+layout: base.njk
+bodyClass: woodworking-page wood-detail
+pagination:
+  data: woodworking
+  size: 1
+  alias: project
+permalink: "/built/woodworking/{{ project.slug }}/"
+eleventyComputed:
+  title: "Jun Zhou — {{ project.title }}"
+  description: "{{ project.title }} — a {{ project.materials }} woodworking project by Jun Zhou."
+---
+    <div class="name-block">
+      <h1 class="name">{{ project.title }}</h1>
+      <p class="role">{{ project.materials }}{% if project.date %} &middot; {{ project.date | year }}{% endif %}{% if project.hours %} &middot; {{ project.hours }} hrs{% endif %}</p>
+    </div>
+
+    <h2 class="section-label"><a href="/built/woodworking/">&larr; Woodworking</a></h2>
+    <section class="section-body">
+      {%- if project.description %}<p>{{ project.description }}</p>{% endif %}
+      {%- if project.credit %}<p class="wood-credit">{{ project.credit.label }} <a href="{{ project.credit.url }}">{{ project.credit.name }}</a>.</p>{% endif %}
+      <div class="wood-detail-photos">
+      {%- for img in project.images %}
+        <figure>
+          <img src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy" decoding="async">
+          {%- if img.caption %}<figcaption>{{ img.caption }}</figcaption>{% endif %}
+        </figure>
+      {%- endfor %}
+      </div>
+    </section>
