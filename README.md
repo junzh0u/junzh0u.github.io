@@ -22,7 +22,9 @@ locked Eleventy version is used rather than whatever `bunx` would fetch as lates
 ```
 src/
   _includes/       # base.njk (shared <head>/nav/footer) + footer.njk
-  *.njk            # one file per page → / , /uses/ , /built/ , /now/ , /resume/ , /writing/
+  _data/           # global data (JSON) → e.g. woodworking.json drives /built/woodworking/
+  *.njk            # one file per page → / , /uses/ , /built/ , /now/ , /resume/ , /writing/ , /built/woodworking/
+  woodworking-detail.njk  # paginates woodworking.json → a /built/woodworking/<slug>/ page each
   writing/         # Obsidian vault of markdown posts → /writing/<slug>/
   assets/          # CSS, fonts, icons, images (passthrough-copied)
   CNAME .nojekyll favicon.ico og-image.png   # passthrough-copied to the site root
