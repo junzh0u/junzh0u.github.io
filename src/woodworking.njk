@@ -6,17 +6,14 @@ bodyClass: woodworking-page
 permalink: "/built/woodworking/"
 ---
     <div class="name-block">
-      <p class="breadcrumb"><a href="/built/">&larr; Built</a></p>
       <h1 class="name">Woodworking</h1>
       <p class="role">Furniture, decoration, and small pieces</p>
     </div>
 
-{%- set categories = ["Furniture", "Decoration", "Small pieces"] %}
-{%- for category in categories %}
-    <h2 class="section-label">{{ category }}</h2>
+    <h2 class="section-label"><a href="/built/">&larr; Built</a></h2>
     <section class="section-body">
       <div class="wood-gallery">
-      {%- for p in woodworking %}{% if p.category == category %}
+      {%- for p in woodworking | sort(true, false, "date") %}
         <figure>
           <a class="wood-thumb" href="/built/woodworking/{{ p.slug }}/">
             <img src="{{ p.images[0].src }}" alt="{{ p.images[0].alt }}" width="{{ p.images[0].width }}" height="{{ p.images[0].height }}" loading="lazy" decoding="async">
@@ -27,7 +24,6 @@ permalink: "/built/woodworking/"
             {%- if p.images | length > 1 %}<span class="wood-more">{{ p.images | length }} photos <span aria-hidden="true">&rarr;</span></span>{% endif %}
           </figcaption>
         </figure>
-      {%- endif %}{% endfor %}
+      {%- endfor %}
       </div>
     </section>
-{%- endfor %}

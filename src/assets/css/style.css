@@ -416,22 +416,6 @@ footer {
   font-size: 1.1rem;
 }
 
-/* "← Built" breadcrumb above a nested page's title (woodworking lives under Built) */
-.breadcrumb {
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  margin: 0 0 0.85rem;
-}
-
-.breadcrumb a {
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  color: var(--accent);
-}
-
 .contact {
   grid-column: 2;
   grid-row: 1;
@@ -760,6 +744,15 @@ a.wood-title:hover {
 }
 
 /* --- Woodworking detail page: every photo, stacked full width --- */
+
+/* date + build-time on a quiet line under the material, so the header isn't
+   three middot-separated items crammed together */
+.wood-detail-meta {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0.35rem 0 0;
+}
 
 /* plan/credit line under a detail page's description (e.g. "Plan by …") */
 .wood-credit {

@@ -12,7 +12,8 @@ eleventyComputed:
 ---
     <div class="name-block">
       <h1 class="name">{{ project.title }}</h1>
-      <p class="role">{{ project.materials }}{% if project.date %} &middot; {{ project.date | year }}{% endif %}{% if project.hours %} &middot; {{ project.hours }} hrs{% endif %}</p>
+      <p class="role">{{ project.materials }}</p>
+      <p class="wood-detail-meta">{{ project.date | postDate }}{% if project.hours %} &middot; {{ project.hours }} hrs{% endif %}</p>
     </div>
 
     <h2 class="section-label"><a href="/built/woodworking/">&larr; Woodworking</a></h2>
