@@ -96,20 +96,20 @@ projects (each with `slug`, `category`, `materials`, `date`, optional `hours`
 and `credit`, and an `images` array of `{src, width, height, alt, caption?}`),
 and it drives **two** templates:
 
-- `woodworking.njk` — the `/built/woodworking/` gallery index. It groups the flat
-  list by a fixed `categories` list in the template (not in the data) and renders
-  projects in data-file order — curated newest-first within each category, so to
-  reorder you move the entry (the `year` filter derives the displayed year from
-  `date`). Each card links to its detail page.
+- `woodworking.njk` — the `/built/woodworking/` gallery index: all projects in one
+  grid, sorted by `date` newest-first (the `year` filter derives the displayed year
+  from `date`). Each card links to its detail page. (`category` is kept on each
+  entry but currently unused — there to regroup by type if the set outgrows one grid.)
 - `woodworking-detail.njk` — paginates the same array (`size: 1`, `alias:
   project`) to emit a `/built/woodworking/<slug>/` page per project showing every
   photo. Per-page `title`/`description` come from `eleventyComputed`.
 
 So adding a project (or a photo to one) is a one-entry edit, no template change.
 Photos follow the usual image pipeline (WebP under `src/assets/imgs/woodworking/`).
-The gallery is nested under `/built/` (a "← Built" breadcrumb on the index, "←
-Woodworking" on each detail page); the `/built/` page itself carries a teaser of a
-few featured pieces (uniform-cropped thumbnails) linking into it.
+The gallery is nested under `/built/`: a "← Built" back-link as the index's marginal
+label and "← Woodworking" on each detail page (same `.section-label` pattern as a
+post's "← Writing"). The `/built/` page itself carries a teaser of a few featured
+pieces (uniform-cropped thumbnails) linking into it.
 
 ## Writing posts
 
