@@ -1,8 +1,7 @@
 ---
 title: parcel-gmail-ingest — shipping emails into Parcel.app, hands-free
-date: 2026-07-03
+date: 2026-07-04
 description: Parcel discontinued its built-in email ingestion, so I rebuilt the loop with the two parts you already have — Gmail filters queue carrier emails under a label, an Apps Script feeds Parcel's API. No servers, no OAuth app.
-draft: true
 ---
 
 > [!tldr]
