@@ -526,6 +526,10 @@ footer {
   font-weight: 600;
 }
 
+.job + .job {
+  margin-top: 2rem;
+}
+
 .role-block {
   margin: 1.5rem 0;
 }
