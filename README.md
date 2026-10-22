@@ -37,4 +37,4 @@ Pushing to `master` triggers a GitHub Action that builds the site and publishes
 it to GitHub Pages (Pages source: **GitHub Actions**). The build output (`_site/`)
 is generated, not committed.
 
-See [CLAUDE.md](CLAUDE.md) for conventions.
+See [AGENTS.md](AGENTS.md) for conventions.
