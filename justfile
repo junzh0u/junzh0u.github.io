@@ -21,6 +21,8 @@ serve: install
 # because root-relative asset paths break under file://. Chrome may write the PDF
 # and then never exit (same quirk as `og`), so it's backgrounded, polled until the
 # file stops growing, then killed.
+
+# Generate the résumé PDF into _site/resume.pdf
 resume-pdf: build
     #!/usr/bin/env bash
     set -euo pipefail
@@ -55,6 +57,8 @@ resume-pdf: build
 # used to hang this recipe indefinitely. So we launch it in the background, wait for the
 # PNG to finish writing (its size stops growing), then kill Chrome ourselves before
 # resizing. The extra flags + redirect keep the background-updater/crashpad noise out.
+
+# Regenerate the Open Graph preview image (src/og-image.png)
 og:
     #!/usr/bin/env bash
     set -euo pipefail
